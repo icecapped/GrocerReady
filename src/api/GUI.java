@@ -9,7 +9,6 @@ import javafx.stage.Stage;
 public class GUI extends Application {
 	Button button;
 
-	
 	public void init(String[] args) {
         launch(args);
     }
