@@ -51,7 +51,7 @@ public class Ingredient {
 		case "ounce":
 		case "ounces":
 			unit = "oz";
-		} // end of unit conversion
+		} // end of unit collection
 		
 		
 	}
