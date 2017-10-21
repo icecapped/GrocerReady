@@ -3,7 +3,7 @@ package main;
 public class Ingredient {
 	
 	private static final String[] unitListFull = {"pound", "pounds", "kilogram", 
-			"kilograms", "litre", "litres", "mililitre", "mililitres", "tablespoon", 
+			"kilograms", "litre", "litres","liter","liters", "millilitre", "millilitres", "milliliter","milliliters","tablespoon", 
 			"tablespoons", "teaspoon", "teaspoons", "ounce", "ounces", "inch", "inches",
 			"centimeters", "centimetres", "centimetre", "centimeter", "foot", "feet", 
 			""};
@@ -23,7 +23,7 @@ private static final String[] unitListFullConverted = {"lb", "lb", "kg", "kg", "
 		unit = "";
 		description = "";
 		
-	}
+	}// end of constructor Ingredient()
 	public Ingredient (double quantity, String description, String unit)
 	{
 		this.quantity = quantity;
@@ -32,9 +32,9 @@ private static final String[] unitListFullConverted = {"lb", "lb", "kg", "kg", "
 		
 		for (int i = 0; i < unitListFull.length; i++) {
 			if (unitListFull[i].equals(description)) this.description = unitListFullConverted[i];
-		}
+		}//end of for (int i=0; i< unitListFull.length; i++)
 		
-	}
+	}//end of public Ingredient(double quantity, String description, String unit)
 	public String toString()
 	{
 		if (unit.equals("nu"))
@@ -47,5 +47,5 @@ private static final String[] unitListFullConverted = {"lb", "lb", "kg", "kg", "
 		} // end of quantity checking 
 	} // end of method return
 		
-}
+}//end of public class Ingredient
 
