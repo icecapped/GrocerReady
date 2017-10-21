@@ -10,7 +10,7 @@ public class Ingredient {
 			"centimeters", "centimetres", "centimetre", "centimeter", "foot", "feet", 
 			""};
 	
-private static final String[] unitListFullConverted = {"lb", "lb", "kg", "kg", "L", "L",
+	private static final String[] unitListFullConverted = {"lb", "lb", "kg", "kg", "L", "L",
 		"mL", "mL", "tbsp", "tbsp", "tsp", "tsp", "oz", "oz", "in", "in", "cm", "cm",
 		"cm", "cm", "ft", "ft"};
 	
