@@ -66,6 +66,7 @@ private static final String[] unitListFullConverted = {"lb", "lb", "kg", "kg", "
 		case "ounce":
 		case "ounces":
 			unit = "oz";
+<<<<<<< HEAD
 			break;
 		case "inch":
 		case "inches":
@@ -83,6 +84,11 @@ private static final String[] unitListFullConverted = {"lb", "lb", "kg", "kg", "
 			unit = "nu"
 			break;			
 		} // end of unit type conversion
+=======
+		} // end of unit collection
+		
+		
+>>>>>>> 002ed294d8938a76c6780bc3eb491a57377f1322
 	}
 	public String toString()
 	{
