@@ -1,9 +1,6 @@
 package main;
 
 public class Ingredient {
-
-	private static final String[] unitList = {"lb", "kg", "L", "tbsp", "tsp", "oz", 
-				"in", "cm", "ft", "nu"};
 	
 	private static final String[] unitListFull = {"pound", "pounds", "kilogram", 
 			"kilograms", "litre", "litres", "mililitre", "mililitres", "tablespoon", 
@@ -34,61 +31,9 @@ private static final String[] unitListFullConverted = {"lb", "lb", "kg", "kg", "
 		unit = unit.toLowerCase();
 		
 		for (int i = 0; i < unitListFull.length; i++) {
-			if (unitListFull[i].equals(description)) this.description = unitListFull[i];
+			if (unitListFull[i].equals(description)) this.description = unitListFullConverted[i];
 		}
 		
-		switch(unit)
-		{
-		case "pound":
-		case "pounds":
-			unit = "lb";
-			break;
-		case "kilogram":
-		case "kilograms":
-			unit = "kg";
-			break;
-		case "litre":
-		case "litres":
-			unit = "L";
-			break;
-		case "mililitre":
-		case "mililitres":
-			unit = "mL";
-			break;
-		case "tablespoon":
-		case "tablespoons":
-			unit = "tbsp";
-			break;
-		case "teaspoon":
-		case "teaspoons":
-			unit = "tsp";
-			break;
-		case "ounce":
-		case "ounces":
-			unit = "oz";
-<<<<<<< HEAD
-			break;
-		case "inch":
-		case "inches":
-			unit = "in";
-			break;
-		case "centimetre":
-		case "centimetres":
-			unit = "cm";
-			break;
-		case "foot":
-		case "feet":
-			unit = "ft";
-			break;
-		case "":
-			unit = "nu"
-			break;			
-		} // end of unit type conversion
-=======
-		} // end of unit collection
-		
-		
->>>>>>> 002ed294d8938a76c6780bc3eb491a57377f1322
 	}
 	public String toString()
 	{
