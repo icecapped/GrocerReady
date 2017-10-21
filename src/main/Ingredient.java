@@ -5,7 +5,7 @@ public class Ingredient {
 
 	
 	private static final String[] unitListFull = {"pound", "pounds", "kilogram", 
-			"kilograms", "litre", "litres", "mililitre", "mililitres", "tablespoon", 
+			"kilograms", "litre", "litres","liter","liters", "millilitre", "millilitres", "milliliter","milliliters","tablespoon", 
 			"tablespoons", "teaspoon", "teaspoons", "ounce", "ounces", "inch", "inches",
 			"centimeters", "centimetres", "centimetre", "centimeter", "foot", "feet", 
 			""};
@@ -25,7 +25,7 @@ public class Ingredient {
 		unit = "";
 		description = "";
 		
-	}
+	}// end of constructor Ingredient()
 	public Ingredient (double quantity, String description, String unit)
 	{
 		this.quantity = quantity;
@@ -34,9 +34,9 @@ public class Ingredient {
 		
 		for (int i = 0; i < unitListFull.length; i++) {
 			if (unitListFull[i].equals(description)) this.description = unitListFullConverted[i];
-		}
+		}//end of for (int i=0; i< unitListFull.length; i++)
 		
-	}
+	}//end of public Ingredient(double quantity, String description, String unit)
 	public String toString()
 	{
 		if (unit.equals("nu"))
@@ -49,5 +49,5 @@ public class Ingredient {
 		} // end of quantity checking 
 	} // end of method return
 		
-}
+}//end of public class Ingredient
 

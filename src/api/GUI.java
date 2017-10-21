@@ -10,7 +10,11 @@ public class GUI extends Application {
 	Button button;
 
 	
+<<<<<<< HEAD
+	public void hi(String[] args) {
+=======
 	public void init(String[] args) {
+>>>>>>> 09a298a7e3d59d057e2b04493bbd9542e7efd781
         launch(args);
     }
 	
