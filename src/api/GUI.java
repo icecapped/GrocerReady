@@ -10,7 +10,7 @@ public class GUI extends Application {
 	Button button;
 
 	
-	public void hi(String[] args) {
+	public void init(String[] args) {
         launch(args);
     }
 	

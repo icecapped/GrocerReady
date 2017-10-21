@@ -6,10 +6,11 @@ import api.GUI;
 public class main {
 	
 	public static void main(String[] args) {
-		GUI sample = new GUI();
+		GUI GrocerShoppingGUI;
+		GrocerShoppingGUI= new GUI();
 		
-		String[] emptyStringArray = new String[4];
+		String[] emptyStringArray = new String[0];
 		
-		sample.hi(emptyStringArray);
+		GrocerShoppingGUI.init(emptyStringArray);
 	}
 }
