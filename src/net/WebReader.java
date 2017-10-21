@@ -23,6 +23,6 @@ public class WebReader {
 	}
 	
 	private static ArrayList<Ingredient> fetchAR(BufferedReader html){ //Allrecipes
-		
+		return null;
 	}
 }
