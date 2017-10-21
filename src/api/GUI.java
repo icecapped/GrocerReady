@@ -6,8 +6,13 @@ import javafx.scene.control.Button;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 
+import java.util.ArrayList;
+
+import main.Ingredient;
+
 public class GUI extends Application {
-	Button button;
+	Button addURL;
+	Button submitURLs;
 
 	public void init(String[] args) {
         launch(args);
@@ -15,7 +20,7 @@ public class GUI extends Application {
 	
     @Override
     public void start(Stage primaryStage) throws Exception {
-        primaryStage.setTitle("Title of the Window");
+        primaryStage.setTitle("Grocer Ready");
         button = new Button();
         button.setText("Click me");
         StackPane layout = new StackPane();
@@ -23,6 +28,11 @@ public class GUI extends Application {
         Scene scene = new Scene(layout, 300, 250);
         primaryStage.setScene(scene);
         primaryStage.show();
+    }
+    
+    public void showIngredients(Stage finalStage, ArrayList<Ingredient> allIngredients) throws Exception {
+        finalStage.setTitle("Grocer Ready");
+
     }
     
 }
