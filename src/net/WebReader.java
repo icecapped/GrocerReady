@@ -27,8 +27,13 @@ public class WebReader {
 		
 		String s;
 		while((s = html.readLine()) != null){
-			if(s.contains("itemprop=\"ingredients\"")){
+			if(s.contains("itemprop=\"ingredients\"")){ // fetching ingredients
+				String ingredientString;
+				int left = s.indexOf("itemprop=\"ingredients\"");
+				int right = s.substring(left).indexOf("<");
 				
+				ingredientString = s.substring(left, right);
+				list.add(new Ingredient());
 			}
 		}
 		return null;
