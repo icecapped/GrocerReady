@@ -37,7 +37,6 @@ public class InputProcessor {
 			}
 			catch (IOException e)
 			{
-				
 				return new String[] {"ERROR (2)"};
 			}
 			// consolidate the ingredients.
@@ -52,13 +51,12 @@ public class InputProcessor {
 			// return an array of string ingredient representations.
 			return finalIngredient;
 			 
-		} // end of if url is valid
+		} 
 		else
 		{
-			String[] finalIngredient = new String[1];
-			finalIngredient[0] = "Please enter a valid url.";
-			return finalIngredient;
-		}
+			
+			return new String[] {"Please enter a valid url."};
+		} // end of if url is valid
 	}
 	
 	
