@@ -35,10 +35,9 @@ public class InputProcessor {
 				{
 					ArrayList<Ingredient> temp = WebReader.getIngredients(url.get(i));
 					// add the ingredients from the list at this url
-					for (int j = 0; j < temp.size() - 1; j++)
-					{
-						ingredient.add(temp.get(j));
-					}
+					
+					ingredient.addAll(temp);
+					
 					// add together ingredients from different recipes.
 				} // end of for(int i = 0; i < url.size() - 1; i++)
 			}
