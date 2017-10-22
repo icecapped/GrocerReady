@@ -30,7 +30,7 @@ public class GUI extends Application {
     }
 	
 	public void testWait(){
-	    final long INTERVAL = 2000;
+	    final long INTERVAL = 2000000;
 	    long start = System.nanoTime();
 	    long end=0;
 	    do{
@@ -92,9 +92,9 @@ public class GUI extends Application {
             	
                 if (!errorOrNo) {
                 	//Update URL String/Log
-                	URLs = URLs + URLField.getText() + "\n" + " ";
+                	URLs = URLs + URLField.getText() + "\n";
                 }
-                URLField.setText("Enter next URL... or click submit.");
+                URLField.setText("Enter next URL... or click submit." + errorOrNo + testURL.getIngredients(arrToTestURL)[0]);
                 URLDisplay.setText(URLs);
             }
         });
