@@ -51,7 +51,9 @@ public class InputProcessor {
 			String[] finalIngredient = new String[ingredient.size()];
 			for (int i = 0; i < finalIngredient.length; i++)
 			{
-				finalIngredient[i] = ingredient.get(i).toString();
+	
+				//check for 
+				finalIngredient[i] = "• " + ingredient.get(i).toString();
 			} // end of for for (int i = 0; i < finalIngredient.length - 1, i++)
 			
 			// return an array of string ingredient representations.
