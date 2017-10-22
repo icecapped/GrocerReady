@@ -7,7 +7,11 @@ import java.io.*;
 
 public class WebReader {
 
-	public static ArrayList<Ingredient> getIngredients(String link) throws IOException{
+	/*
+	 * TODO, make a method to seperate into quantity/unit/description
+	 */
+	
+	public static ArrayList<String> /*ArrayList<String>*/ getIngredients(String link) throws IOException{
 		URL url = new URL(link);
 		URLConnection website = url.openConnection();
 		BufferedReader html = new BufferedReader(new InputStreamReader(website.getInputStream()));
@@ -22,7 +26,7 @@ public class WebReader {
 		return null;
 	}
 	
-	private static ArrayList<Ingredient> fetchAR(BufferedReader html) throws IOException{ //Allrecipes
+	private static ArrayList<String> fetchAR(BufferedReader html) throws IOException{ //Allrecipes
 		ArrayList<Ingredient> list = new ArrayList<Ingredient>();
 		
 		String s;
