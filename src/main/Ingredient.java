@@ -18,6 +18,15 @@ public class Ingredient {
 	private double quantity;
 	private String unit;
 	
+	private static final double OUNCE_TO_GRAMS= 28.34952;
+	private static final double POUNDS_TO_KILOGRAMS= 0.453592;
+	private static final double TABLESPOONS_TO_MILLILITRES= 14.7868;
+	private static final double TEASPOONS_TO_MILLILITRES= 4.92892;
+	private static final double INCHES_TO_CENTIMETRES= 2.54;
+	private static final double FEET_TO_CENTIMETRES= 30.48;
+	private static final double CUPS_TO_LITRES= 0.24;
+	private static final double PINTS_TO_LITRES= 0.473176;	
+	
 	
 	public Ingredient()
 	{
@@ -49,9 +58,42 @@ public class Ingredient {
 		} // end of quantity checking 
 	} // end of method return
 	
-	public static void convert() {
+	public void convertUnits() {
 		
-	}
 		
+		if (unit== "oz") {
+			quantity = quantity * OUNCE_TO_GRAMS;
+			unit="gr";
+		}
+		else if (unit=="lb") {
+			quantity= quantity * POUNDS_TO_KILOGRAMS;
+			unit= "L";
+		}
+		else if (unit=="tbsp") {
+			quantity= quantity * TABLESPOONS_TO_MILLILITRES;
+			unit= "mL";
+		}
+		else if (unit=="tsp") {
+			quantity= quantity * TEASPOONS_TO_MILLILITRES;
+			unit="mL";
+		}
+		else if (unit=="in") {
+			quantity= quantity* INCHES_TO_CENTIMETRES;
+			unit="cm";
+		}
+		else if (unit=="ft") {
+			quantity= quantity* FEET_TO_CENTIMETRES;
+			unit= "cm";
+		}
+		else if (unit=="cp") {
+			quantity=quantity* CUPS_TO_LITRES;
+			unit="L";
+		}
+		else if (unit== "p") {
+			quantity= quantity* PINTS_TO_LITRES;
+			unit="L";
+		}
+		
+			}
 }//end of public class Ingredient
 
