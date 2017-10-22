@@ -10,7 +10,7 @@ public class IngredientsCollector {
 			for (int j=index+1; j< ingredientsArray.size(); j++) {
 				if (ingredientsArray.get(index).description.equals(ingredientsArray.get(j).description) && ingredientsArray.get(index).unit==ingredientsArray.get(j).unit) {
 					ingredientsArray.get(index).description= ingredientsArray.get(index).description;
-					ingredientsArray.get(index).quantity += ingredientsArray.get(j).quantity;
+					ingredientsArray.get(index).quantity = ingredientsArray.get(index).quantity+ ingredientsArray.get(j).quantity;
 					ingredientsArray.get(index).unit= ingredientsArray.get(index).unit;
 					ingredientsArray.remove(j);
 				}//end of if
