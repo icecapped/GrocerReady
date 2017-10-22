@@ -29,6 +29,16 @@ public class GUI extends Application {
         launch(args);
     }
 	
+	public void testWait(){
+	    final long INTERVAL = 2000;
+	    long start = System.nanoTime();
+	    long end=0;
+	    do{
+	        end = System.nanoTime();
+	    }while(start + INTERVAL >= end);
+	    System.out.println(end - start);
+	}
+	
 	Button addURL;
 	Button submitURLs;
 	Text title;
@@ -64,23 +74,31 @@ public class GUI extends Application {
     	addURLGrid.setPadding(new Insets(25,0,0,0));
     	addURLGrid.add(addURL, 0, 0);
     	addURL.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
+            @Override 
             public void handle(ActionEvent event) {
             	//Check for errors
             	InputProcessor testURL = new InputProcessor();
                 ArrayList<String> arrToTestURL = new ArrayList<>();
+                Boolean errorOrNo = false;
                 
                 //Invalid URL Error
                 String [] Error = {"ERROR (1)"};
                 if (testURL.getIngredients(arrToTestURL).equals(Error)) {
                 	URLField.setText("Invalid URL");
-                	System.nanoTime();
-                	
+                	testWait();
+                	errorOrNo = true;
+                }
+                Error[0] = "ERROR (2)";
+                if (testURL.getIngredients(arrToTestURL).equals(Error)) {
+                	URLField.setText("Invalid URL");
+                	testWait();
+                	errorOrNo = true;
                 }
             	
-                //Update URL String/Log
-            	URLs = URLs + URLField.getText() + "\n";
-            	
+                if (!errorOrNo) {
+                	//Update URL String/Log
+                	URLs = URLs + URLField.getText() + "\n";
+                }
                 URLField.setText("Enter next URL... or click submit.");
                 URLDisplay.setText(URLs);
             }
