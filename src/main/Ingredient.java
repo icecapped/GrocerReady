@@ -93,15 +93,11 @@ public class Ingredient {
 			quantity= quantity* PINTS_TO_LITRES;
 			unit="L";
 		}//end of else if 7
-		
-<<<<<<< HEAD
-	}//end of public void convertUnits()
-}//end of public class Ingredient
+		//end of public void convertUnits()//end of public class Ingredient
 
-=======
 	}
 	
 	//variable methods
 	
 }//end of public class Ingredient
->>>>>>> f489b2a9d464555863de067b032fda461c323603
+

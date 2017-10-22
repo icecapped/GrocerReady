@@ -40,7 +40,7 @@ public class InputProcessor {
 				return new String[] {"ERROR (2)"};
 			}
 			// consolidate the ingredients.
-			ingredient = IngredientCollector.processedList(ingredient);
+			ingredient = IngredientsCollector.processedList(ingredient);
 			// convert the ingredients into a array of string ingredient representations
 			String[] finalIngredient = new String[ingredient.size()];
 			for (int i = 0; i < finalIngredient.length - 1; i++)

@@ -38,7 +38,7 @@ public class WebReader {
 		return ing;
 	}
 	
-	public static ArrayList<String> /*ArrayList<String>*/ getIngredients(String link) throws IOException{
+	public static ArrayList<Ingredient> /*ArrayList<String>*/ getIngredients(String link) throws IOException{
 		URL url = new URL(link);
 		URLConnection website = url.openConnection();
 		BufferedReader html = new BufferedReader(new InputStreamReader(website.getInputStream()));
@@ -47,10 +47,15 @@ public class WebReader {
 			return null;
 		}
 		if(link.substring(0, 29).equals("http://allrecipes.com/recipe/")){
-			return fetchAR(html);
+			ArrayList<Ingredient> al = new ArrayList<Ingredient>();
+			ArrayList<String> as = fetchAR(html);
+			for(int i = 0; i < as.size(); i++){
+				al.add(WebReader.stringToIngredient(as.get(i)));
+			}
+			return al;
 		}
 		
-			return null;
+		return null;
 	}
 	
 	private static ArrayList<String> fetchAR(BufferedReader html) throws IOException{ //Allrecipes
@@ -69,5 +74,12 @@ public class WebReader {
 			}
 		}
 		return null;
+	}
+	
+	public static void main(String[] args) throws IOException{
+		ArrayList<Ingredient> al = WebReader.getIngredients("http://allrecipes.com/recipe/76702/garlic-delicata/?internalSource=previously%20viewed&referringContentType=home%20page&clickId=cardslot%2020");
+		for(int i = 0; i < al.size(); i++){
+			System.out.println(al.get(i).quantity);
+		}
 	}
 }
