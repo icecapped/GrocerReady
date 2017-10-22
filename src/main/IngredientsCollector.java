@@ -25,10 +25,10 @@ public class IngredientsCollector {
 				}//end of if
 			}//end of for (j) statement
 		}//end of for consolidateIngredients i statement
-		if (ingredientsArray.get(ingredientsArray.size()).description== ingredientsArray.get(ingredientsArray.size()-1).description) {
-			if (ingredientsArray.get(ingredientsArray.size()).unit== ingredientsArray.get(ingredientsArray.size()-1).unit) {
-				ingredientsArray.get(ingredientsArray.size()-1).quantity += ingredientsArray.get(ingredientsArray.size()).quantity;
-				ingredientsArray.remove(ingredientsArray.remove(ingredientsArray.size()));
+		if (ingredientsArray.get(ingredientsArray.size() - 2).description.equals(ingredientsArray.get(ingredientsArray.size()-1).description)) {
+			if (ingredientsArray.get(ingredientsArray.size() - 2).unit== ingredientsArray.get(ingredientsArray.size() - 1).unit) {
+				ingredientsArray.get(ingredientsArray.size() - 2).quantity += ingredientsArray.get(ingredientsArray.size() - 1).quantity;
+				ingredientsArray.remove(ingredientsArray.remove(ingredientsArray.size() - 1));
 			}//end of if the unit is the same
 		}//end of if description is the same
 		for (int index=0; index<ingredientsArray.size(); index++) {
