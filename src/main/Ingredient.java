@@ -48,6 +48,10 @@ public class Ingredient {
 			return quantity + unit + " " + description;
 		} // end of quantity checking 
 	} // end of method return
+	
+	public static void convert() {
+		
+	}
 		
 }//end of public class Ingredient
 
