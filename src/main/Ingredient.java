@@ -1,25 +1,17 @@
 package main;
 
-/**
- * Evaluates the ingredients' units, converts them to short form, then converts to desired units
- * @author Michael Shi, Dave Singh, Ana Han, Lokeesan Kaneshwaran
- * @version 1.0
- *
- */
+import java.text.DecimalFormat;
 
 public class Ingredient {
-	/**
-	 * Description of unit lists (as written on web sites) as an array and its equivalent short form as another array
-	 */
 	
 	public static final String[] unitListFull = {"pound", "pounds", "kilogram", 
 			"kilograms", "litre", "litres","liter","liters","cups", "cup", "pint", "pints", "millilitre", "millilitres", "milliliter","milliliters","tablespoon", 
 			"tablespoons", "teaspoon", "teaspoons", "ounce", "ounces", "inch", "inches",
-			"centimeters", "centimetres", "centimetre", "centimeter", "foot", "feet"};
+			"centimeters", "centimetres", "centimetre", "centimeter", "foot", "feet", "gram", "grams"};
 	
 	public static final String[] unitListFullConverted = {"lb", "lb", "kg", "kg", "L", "L", "L","L", "cp", "cp", "p", "p",
 		"mL", "mL", "mL", "mL", "tbsp", "tbsp", "tsp", "tsp", "oz", "oz", "in", "in", "cm", "cm",
-		"cm", "cm", "ft", "ft"};
+		"cm", "cm", "ft", "ft", "g", "g"};
 	
 	public String description;
 	public double quantity;
@@ -34,6 +26,7 @@ public class Ingredient {
 	private static final double CUPS_TO_LITRES= 0.24;
 	private static final double PINTS_TO_LITRES= 0.473176;	
 	
+	DecimalFormat df = new DecimalFormat("#.##");
 	
 	public Ingredient()
 	{
@@ -58,11 +51,35 @@ public class Ingredient {
 		System.out.println(unit);
 		if(unit == null)
 		{
-			return quantity + " " + description;
-		}//end of if
+			if (quantity == 0) {
+				return description;
+			}
+			else if (quantity % 1 == 0) {
+				int q = (int) quantity;
+				return q + " " + description;
+			}
+			else {
+				quantity = (double) ((int) (quantity * 100)) / 100;
+//				System.out.println(quantity);
+				return quantity + " " + description;
+			}
+			
+		}
 		else
 		{
-			return quantity + unit + " " + description;
+			if (quantity == 0) {
+				return description;
+			}
+			else if (quantity % 1 == 0) {
+				int q = (int) quantity;
+				return q + unit + " " + description;
+			}
+			else {
+				quantity = (double) ((int) (quantity * 100)) / 100;
+//				System.out.println(quantity);
+				return quantity + unit + " " + description;
+			}
+			
 		} // end of quantity checking 
 	} // end of method return
 	
@@ -71,43 +88,46 @@ public class Ingredient {
 		
 		if (unit== "oz") {
 			quantity = quantity * OUNCE_TO_GRAMS;
-			unit="gr";
+			unit="g";
 		}//end of initial if
 		else if (unit=="L") {
 			quantity= quantity* 1000;
 			unit="mL";
-		}//end of else if 1
+		}
 		
 		else if (unit=="lb") {
 			quantity= quantity * POUNDS_TO_KILOGRAMS*1000;
-			unit= "gr";
-		}//end of else if 2
+			unit= "g";
+		}//end of else if 1
 		else if (unit=="tbsp") {
 			quantity= quantity * TABLESPOONS_TO_MILLILITRES;
 			unit= "mL";
-		}//end of else if 3
+		}//end of else if 2
 		else if (unit=="tsp") {
 			quantity= quantity * TEASPOONS_TO_MILLILITRES;
 			unit="mL";
-		}//end of else if 4
+		}//end of else if 3
 		else if (unit=="in") {
 			quantity= quantity* INCHES_TO_CENTIMETRES;
 			unit="cm";
-		}// end of else if 5
+		}// end of else if 4
 		else if (unit=="ft") {
 			quantity= quantity* FEET_TO_CENTIMETRES;
 			unit= "cm";
-		}// end of else if 6
+		}// end of else if 5
 		else if (unit=="cp") {
 			quantity=quantity* CUPS_TO_LITRES*1000;
 			unit="mL";
-		}//end of else if 7
+		}//end of else if 6
 		else if (unit== "p") {
 			quantity= quantity* PINTS_TO_LITRES*1000;
 			unit="mL";
-		}//end of else if 8
+		}//end of else if 7
+		//end of public void convertUnits()//end of public class Ingredient
 
-	}//variable methods
+	}
+	
+	//variable methods
 	
 }//end of public class Ingredient
 
