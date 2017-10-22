@@ -2,6 +2,8 @@ package api;
 
 import main.*;
 import javafx.application.Application;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 
 import java.util.ArrayList;
@@ -27,18 +29,20 @@ public class GUI extends Application {
         launch(args);
     }
 	
+	Button addURL;
+	Button submitURLs;
+	Text title;
+	BorderPane border;
+	HBox titleAndURL;
+	Scene scene;
+	TextField URLField;
+	TextArea URLDisplay;
+	String URLs = "";
+	
     @Override
     public void start(Stage primaryStage) throws Exception {
     	//Initialize GUI Objects
-    	Button addURL;
-    	Button submitURLs;
-    	Text title;
-    	BorderPane border;
-    	HBox titleAndURL;
-    	Scene scene;
-    	TextField URLField;
-    	TextArea URLDisplay;
-    	String URLs = "";
+    	
     	
     	//URL Field
     	URLField = new TextField();
@@ -59,6 +63,28 @@ public class GUI extends Application {
     	GridPane addURLGrid = new GridPane();
     	addURLGrid.setPadding(new Insets(25,0,0,0));
     	addURLGrid.add(addURL, 0, 0);
+    	addURL.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+            	//Check for errors
+            	InputProcessor testURL = new InputProcessor();
+                ArrayList<String> arrToTestURL = new ArrayList<>();
+                
+                //Invalid URL Error
+                String [] Error = {"ERROR (1)"};
+                if (testURL.getIngredients(arrToTestURL).equals(Error)) {
+                	URLField.setText("Invalid URL");
+                	System.nanoTime();
+                	
+                }
+            	
+                //Update URL String/Log
+            	URLs = URLs + URLField.getText() + "\n";
+            	
+                URLField.setText("Enter next URL... or click submit.");
+                URLDisplay.setText(URLs);
+            }
+        });
     	
     	//horizontal box for title, URL field and addURL button
         titleAndURL = new HBox();

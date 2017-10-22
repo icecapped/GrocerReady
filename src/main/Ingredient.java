@@ -7,11 +7,10 @@ public class Ingredient {
 	public static final String[] unitListFull = {"pound", "pounds", "kilogram", 
 			"kilograms", "litre", "litres","liter","liters","cups", "cup", "pint", "pints", "millilitre", "millilitres", "milliliter","milliliters","tablespoon", 
 			"tablespoons", "teaspoon", "teaspoons", "ounce", "ounces", "inch", "inches",
-			"centimeters", "centimetres", "centimetre", "centimeter", "foot", "feet", 
-			""};
+			"centimeters", "centimetres", "centimetre", "centimeter", "foot", "feet"};
 	
-	public static final String[] unitListFullConverted = {"lb", "lb", "kg", "kg", "L", "L", "cp", "cp", "p", "p",
-		"mL", "mL", "tbsp", "tbsp", "tsp", "tsp", "oz", "oz", "in", "in", "cm", "cm",
+	public static final String[] unitListFullConverted = {"lb", "lb", "kg", "kg", "L", "L", "L","L", "cp", "cp", "p", "p",
+		"mL", "mL", "mL", "mL", "tbsp", "tbsp", "tsp", "tsp", "oz", "oz", "in", "in", "cm", "cm",
 		"cm", "cm", "ft", "ft"};
 	
 	public String description;
@@ -42,7 +41,7 @@ public class Ingredient {
 		unit = unit.toLowerCase();
 		
 		for (int i = 0; i < unitListFull.length; i++) {
-			if (unitListFull[i].equals(description)) this.description = unitListFullConverted[i];
+			if (unitListFull[i].equals(unit)) this.unit = unitListFullConverted[i];
 		}//end of for (int i=0; i< unitListFull.length; i++)
 		
 	}//end of public Ingredient(double quantity, String description, String unit)
