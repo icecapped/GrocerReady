@@ -2,12 +2,15 @@ package api;
 
 import main.*;
 import javafx.application.Application;
+import javafx.geometry.Insets;
+
 import java.util.ArrayList;
 import javafx.scene.text.*;
 import javafx.stage.*;
 import javafx.scene.layout.*;
 import javafx.scene.control.*;
 import javafx.scene.*;
+//import javafx.geometry.Insets;
 
 public class GUI extends Application {
 
@@ -20,7 +23,6 @@ public class GUI extends Application {
     	Button addURL;
     	Button submitURLs;
     	Text title;
-    	Font titleFont;
     	BorderPane border;
     	HBox titleAndURL;
     	Scene scene;
@@ -28,14 +30,18 @@ public class GUI extends Application {
         titleAndURL = new HBox();
         border = new BorderPane();
         border.setTop(titleAndURL);
-        titleFont = new Font("Segoe", 20);
     	
     	primaryStage.setTitle("Grocer Ready");     
         
         title = new Text("Grocery Ready");
-        title.setFont(titleFont);
+        title.setFont(Font.font("Segoe UI Light", 40));
         
-        scene = new Scene(border, 300, 250);
+        titleAndURL.getChildren().add(title);
+        titleAndURL.setPadding(new Insets(10, 10, 10, 10));
+        titleAndURL.setSpacing(10);
+        
+        
+        scene = new Scene(border, 1280, 720);
         primaryStage.setScene(scene);
         primaryStage.show();
 
@@ -46,5 +52,4 @@ public class GUI extends Application {
         finalStage.setTitle("Grocer Ready");
 
     }
-    
 }
