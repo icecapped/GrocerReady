@@ -17,8 +17,6 @@ public class WebReader {
 		String numbers = "0123456789";
 		
 		if((s.indexOf(' ') != -1 && (s.indexOf('/') == -1 || s.indexOf(' ') < s.indexOf('/'))) && numbers.contains(s.substring(0, 1))){ // processing whole number/mixed fraction
-			System.out.println(s);
-			System.out.println("hi" + s.substring(0, s.indexOf(' ')));
 			ing.quantity = Integer.parseInt(s.substring(0, s.indexOf(' ')));
 			s = s.substring(s.indexOf(' ') + 1);
 
@@ -32,14 +30,15 @@ public class WebReader {
 		}
 		
 		//checking if has a unit
-		String word = s.substring(0, s.indexOf(' '));
-		System.out.println(ing.unit);
-		if(Arrays.toString(Ingredient.unitListFull).contains(word) || Arrays.toString(Ingredient.unitListFullConverted).contains(word)){ //
-			ing = new Ingredient(ing.quantity, ing.description, s.substring(0, s.indexOf(' '))); //because constructor groups units
-			System.out.println(s.substring(0, s.indexOf(' ')));
-			s = s.substring(s.indexOf(' ') + 1);
+		if(s.indexOf(' ') != -1){
+			String word = s.substring(0, s.indexOf(' '));
+			System.out.println(ing.unit);
+			if(Arrays.toString(Ingredient.unitListFull).contains(word) || Arrays.toString(Ingredient.unitListFullConverted).contains(word)){ //
+				ing = new Ingredient(ing.quantity, ing.description, s.substring(0, s.indexOf(' '))); //because constructor groups units
+				System.out.println(s.substring(0, s.indexOf(' ')));
+				s = s.substring(s.indexOf(' ') + 1);
+			}
 		}
-
 		ing.description = s;
 		ing.convertUnits();
 		return ing;
