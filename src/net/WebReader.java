@@ -14,24 +14,25 @@ public class WebReader {
 	private static Ingredient stringToIngredient(String s){
 		Ingredient ing = new Ingredient(0, s, "");
 		
-		if(s.indexOf(' ') < s.indexOf('/')){ // processing whole number/mixed fraction
+		if(s.indexOf(' ') != -1 && (s.indexOf('/') == -1 || s.indexOf(' ') < s.indexOf('/'))){ // processing whole number/mixed fraction
 			ing.quantity = Integer.parseInt(s.substring(0, s.indexOf(' ')));
 			s = s.substring(s.indexOf(' ') + 1);
 
 		}
-		if(s.indexOf(0) >= 48 && s.indexOf(0) <= 57){ //fraction
+		if(s.charAt(0) >= 48 && s.charAt(0) <= 57){ //fraction
 			int num = Integer.parseInt(s.substring(0, s.indexOf('/')));
-			s = s.substring(s.indexOf('/' + 1));
+			s = s.substring(s.indexOf('/') + 1);
 			int denom = Integer.parseInt(s.substring(0, s.indexOf(' ')));
-			ing.quantity = num / denom;
+			ing.quantity = (double)num / denom;
 			s = s.substring(s.indexOf(' ') + 1);
 		}
 		
 		//checking if has a unit
 		String word = s.substring(0, s.indexOf(' '));
-		if(Ingredient.unitListFull.toString().contains(word) || Ingredient.unitListFullConverted.toString().contains(word)){
+		System.out.println(word);
+		if(Arrays.toString(Ingredient.unitListFull).contains(word) || Arrays.toString(Ingredient.unitListFullConverted).contains(word)){ //
 			ing.unit = word;
-			s = s.substring(s.indexOf(' ' + 1));
+			s = s.substring(s.indexOf(' ') + 1);
 		}
 		ing.description = s;
 		
@@ -48,7 +49,7 @@ public class WebReader {
 		}
 		if(link.substring(0, 29).equals("http://allrecipes.com/recipe/")){
 			ArrayList<Ingredient> al = new ArrayList<Ingredient>();
-			ArrayList<String> as = fetchAR(html);
+			ArrayList<String> as = fetchAR(html); //converting as into al
 			for(int i = 0; i < as.size(); i++){
 				al.add(WebReader.stringToIngredient(as.get(i)));
 			}
@@ -59,7 +60,7 @@ public class WebReader {
 	}
 	
 	private static ArrayList<String> fetchAR(BufferedReader html) throws IOException{ //Allrecipes
-		ArrayList<Ingredient> list = new ArrayList<Ingredient>();
+		ArrayList<String> list = new ArrayList<String>();
 
 		String s;
 		while((s = html.readLine()) != null){
@@ -70,16 +71,16 @@ public class WebReader {
 				int right =	temp.indexOf('<');
 				ingredientString = temp.substring(23, right);
 				System.out.println(ingredientString);
-				list.add(new Ingredient());
+				list.add(ingredientString);
 			}
 		}
-		return null;
+		return list;
 	}
 	
 	public static void main(String[] args) throws IOException{
 		ArrayList<Ingredient> al = WebReader.getIngredients("http://allrecipes.com/recipe/76702/garlic-delicata/?internalSource=previously%20viewed&referringContentType=home%20page&clickId=cardslot%2020");
 		for(int i = 0; i < al.size(); i++){
-			System.out.println(al.get(i).quantity);
+			System.out.println(al.get(i).quantity + " : " + al.get(i).unit + " : " + al.get(i).description);
 		}
 	}
 }
