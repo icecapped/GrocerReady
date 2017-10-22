@@ -17,7 +17,7 @@ public class IngredientsCollector {
 	 * @return ingredientsArray the condensed ArrayList after like terms have been found
 	 */
 	public static ArrayList<Ingredient> consolidateIngredients(ArrayList<Ingredient>  ingredientsArray) {
-		for (int index=0; index<ingredientsArray.size(); index++) {
+		for (int index=0; index<ingredientsArray.size()+1; index++) {
 			for (int j=index+1; j< ingredientsArray.size(); j++) {
 				if (ingredientsArray.get(index).description.equals(ingredientsArray.get(j).description) && ingredientsArray.get(index).unit==ingredientsArray.get(j).unit) {
 					ingredientsArray.get(index).quantity += ingredientsArray.get(j).quantity;
