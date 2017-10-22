@@ -42,16 +42,17 @@ public class InputProcessor {
 					// add together ingredients from different recipes.
 				} // end of for(int i = 0; i < url.size() - 1; i++)
 			}
+			
 			catch (IOException e)
 			{
 				return new String[] {"ERROR (1)"};
 			}
-			/*
+			
 			if (ingredient == null)
 			{
 				return new String [] {"ERROR (2)"};
 			}
-			*/
+			
 			// consolidate the ingredients.
 
 			ingredient = IngredientsCollector.consolidateIngredients(ingredient);
