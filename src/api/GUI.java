@@ -33,7 +33,7 @@ public class GUI extends Application {
 	Button addURL;
 	Button submitURLs;
 	Text recipeInputTitle;
-	BorderPane border;
+	BorderPane ingredientBorderPane;
 	HBox titleAndURL;
 	Scene scene;
 	TextField URLField;
@@ -45,7 +45,7 @@ public class GUI extends Application {
 	BorderPane ingredientsBorderPane;
 	HBox ingredientsTitleAndURL;
 	TextArea ingredientsDisplay;
-	Stage secondStage;
+	Stage ingredientStage;
 	Scene finalScene;
 	
     @Override
@@ -128,7 +128,7 @@ public class GUI extends Application {
 //            		System.out.println(finalOutput[i]);
 //            	}
             	         	
-            	secondStage = new Stage();
+            	ingredientStage = new Stage();
             	ingredientsBorderPane = new BorderPane();
             	
                 
@@ -136,7 +136,7 @@ public class GUI extends Application {
                 ingredientsTitleAndURL = new HBox();
             	
                 //set window title
-            	secondStage.setTitle("Grocer Ready - Ingredients List");     
+            	ingredientStage.setTitle("Grocer Ready - Ingredients List");     
                 
             	//main title
             	ingredientsTitle = new Text("Grocer Ready - Ingredients List");
@@ -154,7 +154,6 @@ public class GUI extends Application {
                 ingredientsDisplay = new TextArea();
                 ingredientsDisplay.setPrefSize(1205, 500);
                 ingredientsDisplay.setEditable(false);
-//                ingredientsDisplay.setStyle("-fx-background-color: green");
                 
                 String finalDisplayOutput = "";
                 
@@ -162,21 +161,18 @@ public class GUI extends Application {
                 	finalDisplayOutput += finalOutput[i] + "\n";
                 }
                 
-//                System.out.println();
-                
                 ingredientsDisplay.setText(finalDisplayOutput);
                 //grid to add padding to text box
                 GridPane ingredientsDisplayGrid = new GridPane();
                 ingredientsDisplayGrid.setPadding(new Insets(30,35,30,35));
                 ingredientsDisplayGrid.add(ingredientsDisplay, 0, 0);
-                ingredientsDisplay.setFont(Font.font("Segoe UI Light", 20));
-//                
+                ingredientsDisplay.setFont(Font.font("Segoe UI Light", 20));             
                 ingredientsBorderPane.setTop(ingredientsTitleAndURL);
                 ingredientsBorderPane.setCenter(ingredientsDisplayGrid);
                 
                 finalScene = new Scene(ingredientsBorderPane, 1280, 720);
-                secondStage.setScene(finalScene);
-                secondStage.show();
+                ingredientStage.setScene(finalScene);
+                ingredientStage.show();
                 
             }
         });
@@ -213,14 +209,14 @@ public class GUI extends Application {
         URLListGrid.add(URLDisplay, 0, 0);
         URLDisplay.setFont(Font.font("Segoe UI Light", 20));
         
-        //main body border pane
-        border = new BorderPane();
-        border.setTop(titleAndURL);
-        border.setCenter(URLListGrid);
-        border.setBottom(submitURLsGrid);
+        //main body ingredientBorderPane pane
+        ingredientBorderPane = new BorderPane();
+        ingredientBorderPane.setTop(titleAndURL);
+        ingredientBorderPane.setCenter(URLListGrid);
+        ingredientBorderPane.setBottom(submitURLsGrid);
         
         //reveal scene
-        scene = new Scene(border, 1280, 720);
+        scene = new Scene(ingredientBorderPane, 1280, 720);
         primaryStage.setScene(scene);
         primaryStage.show();
         
