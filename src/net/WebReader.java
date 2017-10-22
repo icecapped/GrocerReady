@@ -21,7 +21,10 @@ public class WebReader {
 		}
 		if(s.indexOf(0) >= 48 && s.indexOf(0) <= 57){ //fraction
 			int num = Integer.parseInt(s.substring(0, s.indexOf('/')));
-			
+			s = s.substring(s.indexOf('/' + 1));
+			int denom = Integer.parseInt(s.substring(0, s.indexOf(' ')));
+			ing.quantity = num / denom;
+			s = s.substring(s.indexOf(' ') + 1);
 		}
 		
 		//checking if has a unit
@@ -31,6 +34,8 @@ public class WebReader {
 			s = s.substring(s.indexOf(' ' + 1));
 		}
 		ing.description = s;
+		
+		return ing;
 	}
 	
 	public static ArrayList<String> /*ArrayList<String>*/ getIngredients(String link) throws IOException{
