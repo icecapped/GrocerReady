@@ -25,6 +25,12 @@ public class IngredientsCollector {
 				}//end of if
 			}//end of for (j) statement
 		}//end of for consolidateIngredients i statement
+		if (ingredientsArray.get(ingredientsArray.size()).description== ingredientsArray.get(ingredientsArray.size()-1).description) {
+			if (ingredientsArray.get(ingredientsArray.size()).unit== ingredientsArray.get(ingredientsArray.size()-1).unit) {
+				ingredientsArray.get(ingredientsArray.size()-1).quantity += ingredientsArray.get(ingredientsArray.size()).quantity;
+				ingredientsArray.remove(ingredientsArray.remove(ingredientsArray.size()));
+			}//end of if the unit is the same
+		}//end of if description is the same
 		for (int index=0; index<ingredientsArray.size(); index++) {
 			if (ingredientsArray.get(index).unit=="mL" && ingredientsArray.get(index).quantity>=1000) {
 				ingredientsArray.get(index).quantity/= 1000;
