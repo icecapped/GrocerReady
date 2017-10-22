@@ -24,14 +24,20 @@ public class InputProcessor {
 	 */
 	public String[] getIngredients(ArrayList<String> url)
 	{
-		ArrayList<Ingredient> ingredient;
+		ArrayList<Ingredient> ingredient = null;
 		if(url != null) 
 		{
 			try 
-			{
+			{	
+				// open the next recipe
 				for(int i = 0; i < url.size() - 1; i++)
 				{
-					ingredient.add(WebReader.getIngredients(url[i]));
+					ArrayList<Ingredient> temp = WebReader.getIngredients(url.get(i));
+					// add the ingredients from the list at this url
+					for (int j = 0; j < temp.size() - 1; j++)
+					{
+						ingredient.add(temp.get(j));
+					}
 					// add together ingredients from different recipes.
 				} // end of for(int i = 0; i < url.size() - 1; i++)
 			}
@@ -40,7 +46,8 @@ public class InputProcessor {
 				return new String[] {"ERROR (2)"};
 			}
 			// consolidate the ingredients.
-			ingredient = IngredientsCollector.processedList(ingredient);
+
+			ingredient = IngredientsCollector.consolidateIngredients(ingredient);
 			// convert the ingredients into a array of string ingredient representations
 			String[] finalIngredient = new String[ingredient.size()];
 			for (int i = 0; i < finalIngredient.length - 1; i++)
@@ -49,17 +56,13 @@ public class InputProcessor {
 			} // end of for for (int i = 0; i < finalIngredient.length - 1, i++)
 			
 			// return an array of string ingredient representations.
-			return finalIngredient;
-			 
+			return finalIngredient;	 
 		} 
 		else
-		{
-			
+		{	
 			return new String[] {"Please enter a valid url."};
 		} // end of if url is valid
 	}
-	
-	
 } // end of public InputProcessor(String url)
 	
 
