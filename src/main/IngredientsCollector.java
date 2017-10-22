@@ -31,7 +31,7 @@ public class IngredientsCollector {
 			}
 			else if (ingredientsArray.get(index).unit=="cm" && ingredientsArray.get(index).quantity>=100) {
 				ingredientsArray.get(index).quantity= ingredientsArray.get(index).quantity /100;
-				ingredientsArray.get(index).unit="km";
+				ingredientsArray.get(index).unit="m";
 			}
 		}
 			return ingredientsArray;
