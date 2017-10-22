@@ -32,7 +32,7 @@ public class WebReader {
 		//checking if has a unit
 		if(s.indexOf(' ') != -1){
 			String word = s.substring(0, s.indexOf(' '));
-			System.out.println(ing.unit);
+			System.out.println(s);
 			if(Arrays.toString(Ingredient.unitListFull).contains(word) || Arrays.toString(Ingredient.unitListFullConverted).contains(word)){ //
 				ing = new Ingredient(ing.quantity, ing.description, s.substring(0, s.indexOf(' '))); //because constructor groups units
 				System.out.println(s.substring(0, s.indexOf(' ')));
