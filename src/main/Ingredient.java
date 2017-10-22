@@ -65,9 +65,14 @@ public class Ingredient {
 			quantity = quantity * OUNCE_TO_GRAMS;
 			unit="gr";
 		}//end of initial if
+		else if (unit=="L") {
+			quantity= quantity* 1000;
+			unit="mL"
+		}
+		
 		else if (unit=="lb") {
-			quantity= quantity * POUNDS_TO_KILOGRAMS;
-			unit= "L";
+			quantity= quantity * POUNDS_TO_KILOGRAMS*1000;
+			unit= "mL";
 		}//end of else if 1
 		else if (unit=="tbsp") {
 			quantity= quantity * TABLESPOONS_TO_MILLILITRES;
@@ -86,12 +91,12 @@ public class Ingredient {
 			unit= "cm";
 		}// end of else if 5
 		else if (unit=="cp") {
-			quantity=quantity* CUPS_TO_LITRES;
-			unit="L";
+			quantity=quantity* CUPS_TO_LITRES*1000;
+			unit="mL";
 		}//end of else if 6
 		else if (unit== "p") {
-			quantity= quantity* PINTS_TO_LITRES;
-			unit="L";
+			quantity= quantity* PINTS_TO_LITRES*1000;
+			unit="mL";
 		}//end of else if 7
 		//end of public void convertUnits()//end of public class Ingredient
 

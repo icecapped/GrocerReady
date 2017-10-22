@@ -8,11 +8,13 @@ public class IngredientsCollector {
 	public static void consolidateIngredients(ArrayList<Ingredient>  ingredientsArray) {
 		for (int index=0; index<ingredientsArray.size(); index++) {
 			for (int j=index+1; j< ingredientsArray.size(); j++) {
-				if (ingredientsArray.get(index).description).equals(ingredientsArray.get(j).description)) {
-			}
-		
-		}//end of for statement in consolidateIngredients
-	
-	}
-
+				if (ingredientsArray.get(index).description.equals(ingredientsArray.get(j).description) && ingredientsArray.get(index).unit==ingredientsArray.get(j).unit) {
+					ingredientsArray.get(index).description= ingredientsArray.get(index).description;
+					ingredientsArray.get(index).quantity += ingredientsArray.get(j).quantity;
+					ingredientsArray.get(index).unit= ingredientsArray.get(index).unit;
+					ingredientsArray.remove(j);
+				}//end of if
+			}//end of for (j) statement
+		}//end of for consolidateIngredients i statement
+	}//end of method consolidateIngredients
 }//end of public class IngredientsCollector
