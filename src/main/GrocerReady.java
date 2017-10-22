@@ -7,7 +7,7 @@ public class GrocerReady {
 	public static void main(String[] args) {
 
 		GUI GrocerShoppingGUI;
-		GrocerShoppingGUI= new GUI();
+		GrocerShoppingGUI = new GUI();
 		
 		String[] emptyStringArray = new String[0];
 		

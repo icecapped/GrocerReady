@@ -1,18 +1,15 @@
 package api;
 
+import main.*;
 import javafx.application.Application;
-import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.layout.StackPane;
-import javafx.stage.Stage;
-
 import java.util.ArrayList;
-
-import main.Ingredient;
+import javafx.scene.text.*;
+import javafx.stage.*;
+import javafx.scene.layout.*;
+import javafx.scene.control.*;
+import javafx.scene.*;
 
 public class GUI extends Application {
-	Button addURL;
-	Button submitURLs;
 
 	public void init(String[] args) {
         launch(args);
@@ -20,14 +17,28 @@ public class GUI extends Application {
 	
     @Override
     public void start(Stage primaryStage) throws Exception {
-        primaryStage.setTitle("Grocer Ready");
-        button = new Button();
-        button.setText("Click me");
-        StackPane layout = new StackPane();
-        layout.getChildren().add(button);
-        Scene scene = new Scene(layout, 300, 250);
+    	Button addURL;
+    	Button submitURLs;
+    	Text title;
+    	Font titleFont;
+    	BorderPane border;
+    	HBox titleAndURL;
+    	Scene scene;
+    	
+        titleAndURL = new HBox();
+        border = new BorderPane();
+        border.setTop(titleAndURL);
+    	
+    	primaryStage.setTitle("Grocer Ready");     
+        
+        title = new Text("Grocery Ready");
+        title.setFont(titleFont);
+        
+        scene = new Scene(border, 300, 250);
         primaryStage.setScene(scene);
         primaryStage.show();
+
+        
     }
     
     public void showIngredients(Stage finalStage, ArrayList<Ingredient> allIngredients) throws Exception {
