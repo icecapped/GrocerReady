@@ -14,8 +14,9 @@ public class WebReader {
 	
 	private static Ingredient stringToIngredient(String s){
 		Ingredient ing = new Ingredient(0, s, "");
+		String numbers = "0123456789";
 		
-		if(s.indexOf(' ') != -1 && (s.indexOf('/') == -1 || s.indexOf(' ') < s.indexOf('/'))){ // processing whole number/mixed fraction
+		if((s.indexOf(' ') != -1 && (s.indexOf('/') == -1 || s.indexOf(' ') < s.indexOf('/'))) && numbers.contains(s.substring(0, 1))){ // processing whole number/mixed fraction
 			ing.quantity = Integer.parseInt(s.substring(0, s.indexOf(' ')));
 			s = s.substring(s.indexOf(' ') + 1);
 
@@ -29,14 +30,15 @@ public class WebReader {
 		}
 		
 		//checking if has a unit
-		String word = s.substring(0, s.indexOf(' '));
-		System.out.println(ing.unit);
-		if(Arrays.toString(Ingredient.unitListFull).contains(word) || Arrays.toString(Ingredient.unitListFullConverted).contains(word)){ //
-			ing = new Ingredient(ing.quantity, ing.description, s.substring(0, s.indexOf(' ')));
-			System.out.println(s.substring(0, s.indexOf(' ')));
-			s = s.substring(s.indexOf(' ') + 1);
+		if(s.indexOf(' ') != -1){
+			String word = s.substring(0, s.indexOf(' '));
+			System.out.println(ing.unit);
+			if(Arrays.toString(Ingredient.unitListFull).contains(word) || Arrays.toString(Ingredient.unitListFullConverted).contains(word)){ //
+				ing = new Ingredient(ing.quantity, ing.description, s.substring(0, s.indexOf(' '))); //because constructor groups units
+				System.out.println(s.substring(0, s.indexOf(' ')));
+				s = s.substring(s.indexOf(' ') + 1);
+			}
 		}
-
 		ing.description = s;
 		ing.convertUnits();
 		return ing;
@@ -80,8 +82,8 @@ public class WebReader {
 	}
 	
 	public static void main(String[] args) throws IOException{
-		ArrayList<Ingredient> two = WebReader.getIngredients("http://allrecipes.com/recipe/76702/garlic-delicata/?internalSource=previously%20viewed&referringContentType=home%20page&clickId=cardslot%2020");
-		two.addAll(WebReader.getIngredients("http://allrecipes.com/recipe/76702/garlic-delicata/?internalSource=previously%20viewed&referringContentType=home%20page&clickId=cardslot%2020"));
+		ArrayList<Ingredient> two = WebReader.getIngredients("http://allrecipes.com/recipe/73021/summer-squash-chicken-alfredo/?internalSource=hub%20recipe&referringContentType=search%20results&clickId=cardslot%204");
+		two.addAll(WebReader.getIngredients("http://allrecipes.com/recipe/73021/summer-squash-chicken-alfredo/?internalSource=hub%20recipe&referringContentType=search%20results&clickId=cardslot%204"));
 		ArrayList<Ingredient> al = IngredientsCollector.consolidateIngredients(two);
 		for(int i = 0; i < al.size(); i++){
 			System.out.println(al.get(i).quantity + " : " + al.get(i).unit + " : " + al.get(i).description);

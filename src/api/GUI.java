@@ -5,21 +5,13 @@ import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
-
 import java.util.ArrayList;
 import javafx.scene.text.*;
-import javafx.stage.*;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.scene.control.*;
-import javafx.scene.*;
-import javafx.application.Application;
-import javafx.geometry.Insets;
-import javafx.scene.Group;
 import javafx.scene.Scene;
-import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
-import javafx.scene.effect.BlendMode;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 
@@ -29,75 +21,66 @@ public class GUI extends Application {
         launch(args);
     }
 	
-	public void testWait(){
-	    final long INTERVAL = 2000;
-	    long start = System.nanoTime();
-	    long end=0;
-	    do{
-	        end = System.nanoTime();
-	    }while(start + INTERVAL >= end);
-	    System.out.println(end - start);
-	}
-	
+	//Recipe Input Declarations
 	Button addURL;
 	Button submitURLs;
-	Text title;
-	BorderPane border;
-	HBox titleAndURL;
+	Text recipeInputTitle;
+	BorderPane ingredientBorderPane;
+	HBox recipeInputTitleAndURL;
 	Scene scene;
 	TextField URLField;
 	TextArea URLDisplay;
 	String URLs = "";
 	
+	//Ingredients Display Declarations
+	Text ingredientsTitle;
+	BorderPane ingredientsBorderPane;
+	HBox ingredientsTitleAndURL;
+	TextArea ingredientsDisplay;
+	Stage ingredientsStage;
+	Scene ingredientsScene;
+	
     @Override
     public void start(Stage primaryStage) throws Exception {
-    	//Initialize GUI Objects
-    	
     	
     	//URL Field
     	URLField = new TextField();
     	URLField.setText("Enter Recipe URL here...");
     	URLField.setPrefSize(650, 60);
     	URLField.setFont(Font.font("Segoe IU Light", FontWeight.LIGHT, 30));
-    	//GridPane for top margin for URL Field
+    	//Grid Pane for URL Field
     	GridPane URLFieldGrid = new GridPane();
     	URLFieldGrid.setPadding(new Insets(25,0,0,0));
     	URLFieldGrid.add(URLField, 0, 0);
     	
-    	//addURL Button
+    	//Add URL Button
     	addURL = new Button();
     	addURL.setText("Add URL");
     	addURL.setPrefSize(90, 60);
-    	addURL.setStyle("fx-background-color: #000000");
-    	//GridPane for top margin for addURL Button
+    	//Grid Pane for Add URL Button
     	GridPane addURLGrid = new GridPane();
     	addURLGrid.setPadding(new Insets(25,0,0,0));
     	addURLGrid.add(addURL, 0, 0);
+    	//Button Action
     	addURL.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
             	//Check for errors
-            	InputProcessor testURL = new InputProcessor();
                 ArrayList<String> arrToTestURL = new ArrayList<>();
                 Boolean errorOrNo = false;
                 arrToTestURL.add(URLField.getText());
                 
                 //Invalid URL Error
-                String [] Error = {"ERROR (1)"};
-                if (testURL.getIngredients(arrToTestURL).equals(Error)) {
-                	URLField.setText("Invalid URL");
-//                	testWait();
-                	errorOrNo = true;
-                }
-                Error[0] = "ERROR (2)";
-                if (testURL.getIngredients(arrToTestURL).equals(Error)) {
-                	URLField.setText("Invalid URL");
-//                	testWait();
+                if (InputProcessor.getIngredients(arrToTestURL)[0].equals("ERROR")) {
+                	URLField.setText("Invalid URL");                	
                 	errorOrNo = true;
                 }
             	
-                if (!errorOrNo) {
+                if (errorOrNo) {
                 	//Update URL String/Log
+                	URLs = URLs + "Invalid URL.\n";
+                }
+                else {
                 	URLs = URLs + URLField.getText() + "\n";
                 }
                 URLField.setText("Enter next URL... or click submit.");
@@ -105,52 +88,123 @@ public class GUI extends Application {
             }
         });
     	
+    	//Submit URLs Button
+    	submitURLs = new Button();
+    	submitURLs.setText("Submit links");
+    	submitURLs.setPrefSize(200, 60);
+    	//GridPane
+    	GridPane submitURLsGrid = new GridPane();
+    	submitURLsGrid.setPadding(new Insets(0,0,30,1000));
+    	submitURLsGrid.add(submitURLs, 0, 0);
+    	//Button Action
+    	submitURLs.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+            	ArrayList<String> totalURLs = new ArrayList<>();
+            	
+            	String filteredURLs = URLs;
+            	filteredURLs = filteredURLs.replaceAll("Invalid URL.\n", "");
+            	
+            	String[] arr = filteredURLs.split("\n");
+            	
+            	for (int i = 0; i < arr.length; i++) {
+            		totalURLs.add(arr[i]);
+            	}
+            	
+            	String[] finalOutput = InputProcessor.getIngredients(totalURLs);
+            	         	
+            	ingredientsStage = new Stage();
+            	ingredientsBorderPane = new BorderPane();
+            	
+                
+            	//horizontal box for title, URL field and addURL button
+                ingredientsTitleAndURL = new HBox();
+            	
+                //set window title
+            	ingredientsStage.setTitle("Grocer Ready - Ingredients List");     
+                
+            	//main title
+            	ingredientsTitle = new Text("Grocer Ready - Ingredients List");
+            	ingredientsTitle.setFont(Font.font("Segoe UI Light", FontWeight.BOLD, 75));
+            	ingredientsTitle.setFill(Color.WHITE);
+            	
+                //initialize horizontal box
+                ingredientsTitleAndURL.getChildren().add(ingredientsTitle);
+                ingredientsTitleAndURL.setPadding(new Insets(0, 10, 10, 20));
+                ingredientsTitleAndURL.setSpacing(30);
+                ingredientsTitleAndURL.setStyle("-fx-background-color: #72A329;");
+                
+                //bottom text box
+                ingredientsDisplay = new TextArea();
+                ingredientsDisplay.setPrefSize(1205, 500);
+                ingredientsDisplay.setEditable(false);
+                
+                String finalDisplayOutput = "";
+                
+                for (int i = 0; i < finalOutput.length; i++) {
+                	finalDisplayOutput += finalOutput[i] + "\n";
+                }
+                
+                ingredientsDisplay.setText(finalDisplayOutput);
+                
+                //Grid to add padding to text box
+                GridPane ingredientsDisplayGrid = new GridPane();
+                ingredientsDisplayGrid.setPadding(new Insets(30,35,30,35));
+                ingredientsDisplayGrid.add(ingredientsDisplay, 0, 0);
+                ingredientsDisplay.setFont(Font.font("Segoe UI Light", 20));             
+                ingredientsBorderPane.setTop(ingredientsTitleAndURL);
+                ingredientsBorderPane.setCenter(ingredientsDisplayGrid);
+                
+                ingredientsScene = new Scene(ingredientsBorderPane, 1280, 720);
+                ingredientsStage.setScene(ingredientsScene);
+                ingredientsStage.show();
+                
+            }
+        });
+    	
     	//horizontal box for title, URL field and addURL button
-        titleAndURL = new HBox();
+        recipeInputTitleAndURL = new HBox();
     	
         //set window title
-    	primaryStage.setTitle("Grocer Ready");     
+    	primaryStage.setTitle("Grocer Ready - Recipe Input");     
         
     	//main title
-        title = new Text("Grocer Ready");
-        title.setFont(Font.font("Segoe UI Light", FontWeight.BOLD, 75));
-        title.setFill(Color.WHITE);
-        title.setOpacity(0.9);
+    	recipeInputTitle = new Text("Grocer Ready");
+    	recipeInputTitle.setFont(Font.font("Segoe UI Light", FontWeight.BOLD, 75));
+    	recipeInputTitle.setFill(Color.WHITE);
+    	recipeInputTitle.setOpacity(0.9);
         
         //initialize horizontal box
-        titleAndURL.getChildren().add(title);
-        titleAndURL.getChildren().add(URLFieldGrid);
-        titleAndURL.getChildren().add(addURLGrid);
-        titleAndURL.setPadding(new Insets(0, 10, 10, 20));
-        titleAndURL.setSpacing(30);
-        titleAndURL.setStyle("-fx-background-color: #72A329;");
+        recipeInputTitleAndURL.getChildren().add(recipeInputTitle);
+        recipeInputTitleAndURL.getChildren().add(URLFieldGrid);
+        recipeInputTitleAndURL.getChildren().add(addURLGrid);
+        recipeInputTitleAndURL.setPadding(new Insets(0, 10, 10, 20));
+        recipeInputTitleAndURL.setSpacing(30);
+        recipeInputTitleAndURL.setStyle("-fx-background-color: #72A329;");
         
         //bottom text box
         URLDisplay = new TextArea();
         URLDisplay.setPrefSize(1205, 500);
         URLDisplay.setText(URLs);
         URLDisplay.setEditable(false);
+        URLDisplay.setStyle("-fx-background-color: green");
         //grid to add padding to text box
         GridPane URLListGrid = new GridPane();
         URLListGrid.setPadding(new Insets(30,35,30,35));
         URLListGrid.add(URLDisplay, 0, 0);
         URLDisplay.setFont(Font.font("Segoe UI Light", 20));
         
-        //main body border pane
-        border = new BorderPane();
-        border.setTop(titleAndURL);
-        border.setCenter(URLListGrid);
+        //main body ingredientBorderPane pane
+        ingredientBorderPane = new BorderPane();
+        ingredientBorderPane.setTop(recipeInputTitleAndURL);
+        ingredientBorderPane.setCenter(URLListGrid);
+        ingredientBorderPane.setBottom(submitURLsGrid);
         
         //reveal scene
-        scene = new Scene(border, 1280, 720);
+        scene = new Scene(ingredientBorderPane, 1280, 720);
         primaryStage.setScene(scene);
         primaryStage.show();
-
         
     }
-    
-    public void showIngredients(Stage finalStage, ArrayList<Ingredient> allIngredients) throws Exception {
-        finalStage.setTitle("Grocer Ready");
 
-    }
 }

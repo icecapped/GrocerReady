@@ -1,8 +1,6 @@
 package main;
 
 public class Ingredient {
-
-
 	
 	public static final String[] unitListFull = {"pound", "pounds", "kilogram", 
 			"kilograms", "litre", "litres","liter","liters","cups", "cup", "pint", "pints", "millilitre", "millilitres", "milliliter","milliliters","tablespoon", 
@@ -47,7 +45,8 @@ public class Ingredient {
 	}//end of public Ingredient(double quantity, String description, String unit)
 	public String toString()
 	{
-		if (unit.equals("nu"))
+		System.out.println(unit);
+		if(unit == null)
 		{
 			return quantity + " " + description;
 		}
