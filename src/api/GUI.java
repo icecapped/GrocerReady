@@ -17,6 +17,7 @@ import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.effect.BlendMode;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 
@@ -28,37 +29,66 @@ public class GUI extends Application {
 	
     @Override
     public void start(Stage primaryStage) throws Exception {
+    	//Initialize GUI Objects
     	Button addURL;
     	Button submitURLs;
     	Text title;
     	BorderPane border;
     	HBox titleAndURL;
     	Scene scene;
-    	TextField URLField = new TextField();
+    	TextField URLField;
+    	TextArea URLDisplay;
+    	String URLs = "";
+    	
+    	//URL Field
+    	URLField = new TextField();
     	URLField.setText("Enter Recipe URL here...");
     	URLField.setPrefSize(650, 60);
     	URLField.setFont(Font.font("Segoe IU Light", FontWeight.LIGHT, 30));
+    	//GridPane for top margin for URL Field
     	GridPane URLFieldGrid = new GridPane();
     	URLFieldGrid.setPadding(new Insets(25,0,0,0));
     	URLFieldGrid.add(URLField, 0, 0);
-//    	URLField.applyCss();
     	
+    	//addURL Button
+    	addURL = new Button();
+    	addURL.setText("Add URL");
+    	addURL.setPrefSize(90, 60);
+    	addURL.setStyle("fx-background-color: #000000");
+    	//GridPane for top margin for addURL Button
+    	GridPane addURLGrid = new GridPane();
+    	addURLGrid.setPadding(new Insets(25,0,0,0));
+    	addURLGrid.add(addURL, 0, 0);
+    	
+    	//horizontal box for title, URL field and addURL button
         titleAndURL = new HBox();
+        
+        //main body border pane
         border = new BorderPane();
         border.setTop(titleAndURL);
     	
+        //set window title
     	primaryStage.setTitle("Grocer Ready");     
         
+    	//main title
         title = new Text("Grocer Ready");
         title.setFont(Font.font("Segoe UI Light", FontWeight.BOLD, 75));
         title.setFill(Color.WHITE);
+        title.setOpacity(0.9);
         
+        //initialize hbox
         titleAndURL.getChildren().add(title);
         titleAndURL.getChildren().add(URLFieldGrid);
+        titleAndURL.getChildren().add(addURLGrid);
         titleAndURL.setPadding(new Insets(0, 10, 10, 20));
-        titleAndURL.setSpacing(40);
+        titleAndURL.setSpacing(30);
         titleAndURL.setStyle("-fx-background-color: #72A329;");
         
+        //bottom text box
+        URLDisplay = new TextArea();
+        URLDisplay.setText(URLs);
+        
+        //reveal scene
         scene = new Scene(border, 1280, 720);
         primaryStage.setScene(scene);
         primaryStage.show();
