@@ -100,12 +100,12 @@ public class GUI extends Application {
     	submitURLsGrid.setPadding(new Insets(0,0,30,1000));
     	submitURLsGrid.add(submitURLs, 0, 0);
     	//Button Action
-    	submitURLsGrid.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent event) {
-            	showFinalIngredients();
-            }
-        });
+//    	submitURLsGrid.setOnAction(new EventHandler<ActionEvent>() {
+//            @Override
+//            public void handle(ActionEvent event) {
+//            	showFinalIngredients();
+//            }
+//        });
     	
     	//horizontal box for title, URL field and addURL button
         titleAndURL = new HBox();
