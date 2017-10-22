@@ -5,7 +5,7 @@ public class IngredientsCollector {
 
 	/* evaluating*/
 	
-	public static ArrayList consolidateIngredients(ArrayList<Ingredient>  ingredientsArray) {
+	public static ArrayList<Ingredient> consolidateIngredients(ArrayList<Ingredient>  ingredientsArray) {
 		for (int index=0; index<ingredientsArray.size(); index++) {
 			for (int j=index+1; j< ingredientsArray.size(); j++) {
 				if (ingredientsArray.get(index).description.equals(ingredientsArray.get(j).description) && ingredientsArray.get(index).unit==ingredientsArray.get(j).unit) {
