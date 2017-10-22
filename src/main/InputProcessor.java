@@ -52,7 +52,7 @@ public class InputProcessor {
 				// WebReader said that url was too short.
 				return new String [] {"ERROR"};
 			}
-			
+			// only passed this point if not returned already
 			// consolidate the ingredients.
 
 			ingredient = IngredientsCollector.consolidateIngredients(ingredient);
@@ -65,10 +65,11 @@ public class InputProcessor {
 			
 			// return an array of string ingredient representations.
 			return finalIngredient;	 
+			
 		} 
 		else
 		{	
-			return new String[] {"Please enter a valid url."};
+			return new String[] {"ERROR"};
 		} // end of if url is valid
 	}
 } // end of public InputProcessor(String url)
