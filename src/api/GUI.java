@@ -36,7 +36,7 @@ public class GUI extends Application {
 	    do{
 	        end = System.nanoTime();
 	    }while(start + INTERVAL >= end);
-	    System.out.println(end - start);
+//	    System.out.println(end - start);
 	}
 	
 	Button addURL;
@@ -86,7 +86,7 @@ public class GUI extends Application {
                 String [] Error = {"ERROR"};
                 if (testURL.getIngredients(arrToTestURL)[0].equals((Error)[0])) {
                 	URLField.setText("Invalid URL");
-//                	testWait();
+                	testWait();
                 	errorOrNo = true;
                 }
             	
