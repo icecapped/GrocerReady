@@ -5,7 +5,7 @@ public class IngredientsCollector {
 
 	/* evaluating*/
 	
-	public static void consolidateIngredients(ArrayList<Ingredient>  ingredientsArray) {
+	public static ArrayList consolidateIngredients(ArrayList<Ingredient>  ingredientsArray) {
 		for (int index=0; index<ingredientsArray.size(); index++) {
 			for (int j=index+1; j< ingredientsArray.size(); j++) {
 				if (ingredientsArray.get(index).description.equals(ingredientsArray.get(j).description) && ingredientsArray.get(index).unit==ingredientsArray.get(j).unit) {
@@ -16,5 +16,25 @@ public class IngredientsCollector {
 				}//end of if
 			}//end of for (j) statement
 		}//end of for consolidateIngredients i statement
-	}//end of method consolidateIngredients
-}//end of public class IngredientsCollector
+		for (int index=0; index<ingredientsArray.size(); index++) {
+			if (ingredientsArray.get(index).unit=="mL" && ingredientsArray.get(index).quantity>=1000) {
+				ingredientsArray.get(index).quantity= ingredientsArray.get(index).quantity / 1000;
+				ingredientsArray.get(index).unit="L";
+			}
+			else if (ingredientsArray.get(index).unit=="gr" && ingredientsArray.get(index).quantity>=1000) {
+				ingredientsArray.get(index).quantity= ingredientsArray.get(index).quantity / 1000;
+				ingredientsArray.get(index).unit="kg";
+			}
+			else if (ingredientsArray.get(index).unit=="cm" && ingredientsArray.get(index).quantity>=1000) {
+				ingredientsArray.get(index).quantity= ingredientsArray.get(index).quantity /1000;
+				ingredientsArray.get(index).unit= "km";
+			}
+			else if (ingredientsArray.get(index).unit=="cm" && ingredientsArray.get(index).quantity>=100) {
+				ingredientsArray.get(index).quantity= ingredientsArray.get(index).quantity /100;
+				ingredientsArray.get(index).unit="km";
+			}
+		}
+			return ingredientsArray;
+	}
+}
+

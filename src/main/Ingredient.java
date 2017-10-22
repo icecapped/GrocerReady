@@ -67,12 +67,12 @@ public class Ingredient {
 		}//end of initial if
 		else if (unit=="L") {
 			quantity= quantity* 1000;
-			unit="mL"
+			unit="mL";
 		}
 		
 		else if (unit=="lb") {
 			quantity= quantity * POUNDS_TO_KILOGRAMS*1000;
-			unit= "mL";
+			unit= "gr";
 		}//end of else if 1
 		else if (unit=="tbsp") {
 			quantity= quantity * TABLESPOONS_TO_MILLILITRES;
