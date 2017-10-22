@@ -46,14 +46,12 @@ public class InputProcessor {
 			{
 				return new String[] {"ERROR (1)"};
 			}
-			catch (MalformedURLException e)
-			{
-				return new String[] {"ERROR (2)"};
-			}
+			/*
 			if (ingredient == null)
 			{
-				return new String [] {"ERROR (3)"};
+				return new String [] {"ERROR (2)"};
 			}
+			*/
 			// consolidate the ingredients.
 
 			ingredient = IngredientsCollector.consolidateIngredients(ingredient);
