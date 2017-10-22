@@ -49,7 +49,7 @@ public class InputProcessor {
 			ingredient = IngredientsCollector.consolidateIngredients(ingredient);
 			// convert the ingredients into a array of string ingredient representations
 			String[] finalIngredient = new String[ingredient.size()];
-			for (int i = 0; i < finalIngredient.length - 1; i++)
+			for (int i = 0; i < finalIngredient.length; i++)
 			{
 				finalIngredient[i] = ingredient.get(i).toString();
 			} // end of for for (int i = 0; i < finalIngredient.length - 1, i++)
@@ -62,6 +62,9 @@ public class InputProcessor {
 		{	
 			return new String[] {"ERROR"};
 		} // end of if url is valid
+	}
+	
+	public static void main(String[] args){
 	}
 } // end of public InputProcessor(String url)
 	
