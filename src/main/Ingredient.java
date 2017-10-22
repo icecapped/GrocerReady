@@ -64,38 +64,44 @@ public class Ingredient {
 		if (unit== "oz") {
 			quantity = quantity * OUNCE_TO_GRAMS;
 			unit="gr";
-		}
+		}//end of initial if
 		else if (unit=="lb") {
 			quantity= quantity * POUNDS_TO_KILOGRAMS;
 			unit= "L";
-		}
+		}//end of else if 1
 		else if (unit=="tbsp") {
 			quantity= quantity * TABLESPOONS_TO_MILLILITRES;
 			unit= "mL";
-		}
+		}//end of else if 2
 		else if (unit=="tsp") {
 			quantity= quantity * TEASPOONS_TO_MILLILITRES;
 			unit="mL";
-		}
+		}//end of else if 3
 		else if (unit=="in") {
 			quantity= quantity* INCHES_TO_CENTIMETRES;
 			unit="cm";
-		}
+		}// end of else if 4
 		else if (unit=="ft") {
 			quantity= quantity* FEET_TO_CENTIMETRES;
 			unit= "cm";
-		}
+		}// end of else if 5
 		else if (unit=="cp") {
 			quantity=quantity* CUPS_TO_LITRES;
 			unit="L";
-		}
+		}//end of else if 6
 		else if (unit== "p") {
 			quantity= quantity* PINTS_TO_LITRES;
 			unit="L";
-		}
+		}//end of else if 7
 		
+<<<<<<< HEAD
+	}//end of public void convertUnits()
+}//end of public class Ingredient
+
+=======
 	}
 	
 	//variable methods
 	
 }//end of public class Ingredient
+>>>>>>> f489b2a9d464555863de067b032fda461c323603
