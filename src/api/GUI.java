@@ -28,6 +28,7 @@ public class GUI extends Application {
         titleAndURL = new HBox();
         border = new BorderPane();
         border.setTop(titleAndURL);
+        titleFont = new Font("Segoe", 20);
     	
     	primaryStage.setTitle("Grocer Ready");     
         
