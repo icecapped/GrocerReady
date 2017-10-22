@@ -60,6 +60,14 @@ public class WebReader {
 			}
 			return al;
 		}
+		if(link.substring(0, 33).equals("http://www.foodnetwork.ca/recipe/")){
+			ArrayList<Ingredient> al = new ArrayList<Ingredient>();
+			ArrayList<String> as = fetchFN(html); //converting as into al
+			for(int i = 0; i < as.size(); i++){
+				al.add(WebReader.stringToIngredient(as.get(i)));
+			}
+			return al;
+		}
 		
 		return null;
 	}
@@ -76,6 +84,32 @@ public class WebReader {
 				int right =	temp.indexOf('<');
 				ingredientString = temp.substring(23, right);
 				list.add(ingredientString);
+			}
+		}
+		return list;
+	}
+	
+	private static ArrayList<String> fetchFN(BufferedReader html) throws IOException{ //Foodnetwork
+		ArrayList<String> list = new ArrayList<String>();
+		
+		String s;
+		while((s = html.readLine()) != null){
+			if(s.contains("recipe-ingredients")){ //found ingredients
+				html.readLine();
+				while(true){ //getting ingredients
+					s = html.readLine();
+					if(s.indexOf("<p>") == -1){
+						break;
+					}
+					int left = s.indexOf("<p>") + 4;
+					s = s.substring(left);
+
+					int right = s.indexOf("</p>");
+					System.out.println(s);
+					s = s.substring(0, right);
+					
+					list.add(s);
+				}
 			}
 		}
 		return list;
