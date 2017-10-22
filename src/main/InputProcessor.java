@@ -1,5 +1,6 @@
 package main;
 import java.io.IOException;
+import java.net.MalformedURLException;
 import java.util.ArrayList;
 import net.WebReader;
 /**
@@ -43,7 +44,15 @@ public class InputProcessor {
 			}
 			catch (IOException e)
 			{
+				return new String[] {"ERROR (1)"};
+			}
+			catch (MalformedURLException e)
+			{
 				return new String[] {"ERROR (2)"};
+			}
+			if (ingredient == null)
+			{
+				return new String [] {"ERROR (3)"};
 			}
 			// consolidate the ingredients.
 
