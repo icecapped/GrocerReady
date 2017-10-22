@@ -9,9 +9,7 @@ public class IngredientsCollector {
 		for (int index=0; index<ingredientsArray.size(); index++) {
 			for (int j=index+1; j< ingredientsArray.size(); j++) {
 				if (ingredientsArray.get(index).description.equals(ingredientsArray.get(j).description) && ingredientsArray.get(index).unit==ingredientsArray.get(j).unit) {
-					ingredientsArray.get(index).description= ingredientsArray.get(index).description;
-					ingredientsArray.get(index).quantity = ingredientsArray.get(index).quantity+ ingredientsArray.get(j).quantity;
-					ingredientsArray.get(index).unit= ingredientsArray.get(index).unit;
+					ingredientsArray.get(index).quantity += ingredientsArray.get(j).quantity;
 					ingredientsArray.remove(j);
 				}//end of if
 			}//end of for (j) statement
@@ -36,5 +34,7 @@ public class IngredientsCollector {
 		}
 			return ingredientsArray;
 	}
+}
+
 }
 
