@@ -2,7 +2,7 @@ package net;
 import java.net.*;
 import java.util.*;
 import main.Ingredient;
-
+import main.IngredientsCollector;
 import java.io.*;
 
 public class WebReader {
@@ -78,7 +78,9 @@ public class WebReader {
 	}
 	
 	public static void main(String[] args) throws IOException{
-		ArrayList<Ingredient> al = WebReader.getIngredients("http://allrecipes.com/recipe/76702/garlic-delicata/?internalSource=previously%20viewed&referringContentType=home%20page&clickId=cardslot%2020");
+		ArrayList<Ingredient> two = WebReader.getIngredients("http://allrecipes.com/recipe/76702/garlic-delicata/?internalSource=previously%20viewed&referringContentType=home%20page&clickId=cardslot%2020");
+		two.addAll(WebReader.getIngredients("http://allrecipes.com/recipe/76702/garlic-delicata/?internalSource=previously%20viewed&referringContentType=home%20page&clickId=cardslot%2020"));
+		ArrayList<Ingredient> al = IngredientsCollector.consolidateIngredients(two);
 		for(int i = 0; i < al.size(); i++){
 			System.out.println(al.get(i).quantity + " : " + al.get(i).unit + " : " + al.get(i).description);
 		}

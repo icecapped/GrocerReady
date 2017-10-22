@@ -62,10 +62,6 @@ public class GUI extends Application {
     	
     	//horizontal box for title, URL field and addURL button
         titleAndURL = new HBox();
-        
-        //main body border pane
-        border = new BorderPane();
-        border.setTop(titleAndURL);
     	
         //set window title
     	primaryStage.setTitle("Grocer Ready");     
@@ -76,7 +72,7 @@ public class GUI extends Application {
         title.setFill(Color.WHITE);
         title.setOpacity(0.9);
         
-        //initialize hbox
+        //initialize horizontal box
         titleAndURL.getChildren().add(title);
         titleAndURL.getChildren().add(URLFieldGrid);
         titleAndURL.getChildren().add(addURLGrid);
@@ -86,7 +82,19 @@ public class GUI extends Application {
         
         //bottom text box
         URLDisplay = new TextArea();
+        URLDisplay.setPrefSize(1205, 500);
         URLDisplay.setText(URLs);
+        URLDisplay.setEditable(false);
+        //grid to add padding to text box
+        GridPane URLListGrid = new GridPane();
+        URLListGrid.setPadding(new Insets(30,35,30,35));
+        URLListGrid.add(URLDisplay, 0, 0);
+        URLDisplay.setFont(Font.font("Segoe UI Light", 20));
+        
+        //main body border pane
+        border = new BorderPane();
+        border.setTop(titleAndURL);
+        border.setCenter(URLListGrid);
         
         //reveal scene
         scene = new Scene(border, 1280, 720);
