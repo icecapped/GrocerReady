@@ -20,6 +20,7 @@ public class IngredientsCollector {
 	
 	/* evaluating*/
 	
+	
 	public static double toGrams(double quantity, String units) {
 		double converted = 0;
 		if (units=="oz") {
@@ -32,6 +33,8 @@ public class IngredientsCollector {
 		}// end of else
 		return converted;
 	}
+	
+	public static double toKilograms(double quantity, )
 	
 	public IngredientsCollector(double quantity, String description, String units) {
 		
