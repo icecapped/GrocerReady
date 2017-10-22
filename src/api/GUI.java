@@ -11,7 +11,14 @@ import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.scene.control.*;
 import javafx.scene.*;
-//import javafx.geometry.Insets;
+import javafx.application.Application;
+import javafx.geometry.Insets;
+import javafx.scene.Group;
+import javafx.scene.Scene;
+import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
+import javafx.scene.layout.GridPane;
+import javafx.stage.Stage;
 
 public class GUI extends Application {
 
@@ -27,6 +34,14 @@ public class GUI extends Application {
     	BorderPane border;
     	HBox titleAndURL;
     	Scene scene;
+    	TextField URLField = new TextField();
+    	URLField.setText("Enter Recipe URL here...");
+    	URLField.setPrefSize(650, 60);
+    	URLField.setFont(Font.font("Segoe IU Light", FontWeight.LIGHT, 30));
+    	GridPane URLFieldGrid = new GridPane();
+    	URLFieldGrid.setPadding(new Insets(25,0,0,0));
+    	URLFieldGrid.add(URLField, 0, 0);
+//    	URLField.applyCss();
     	
         titleAndURL = new HBox();
         border = new BorderPane();
@@ -35,12 +50,13 @@ public class GUI extends Application {
     	primaryStage.setTitle("Grocer Ready");     
         
         title = new Text("Grocer Ready");
-        title.setFont(Font.font("Segoe UI Light", 80));
+        title.setFont(Font.font("Segoe UI Light", FontWeight.BOLD, 75));
         title.setFill(Color.WHITE);
         
         titleAndURL.getChildren().add(title);
-        titleAndURL.setPadding(new Insets(0, 10, 10, 200));
-        titleAndURL.setSpacing(10);
+        titleAndURL.getChildren().add(URLFieldGrid);
+        titleAndURL.setPadding(new Insets(0, 10, 10, 20));
+        titleAndURL.setSpacing(40);
         titleAndURL.setStyle("-fx-background-color: #72A329;");
         
         scene = new Scene(border, 1280, 720);
