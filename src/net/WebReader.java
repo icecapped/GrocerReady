@@ -1,9 +1,10 @@
 package net;
-import java.net.*;
-import java.util.*;
+
 import main.Ingredient;
 import main.IngredientsCollector;
 import java.io.*;
+import java.net.*;
+import java.util.*;
 
 public class WebReader {
 
@@ -29,13 +30,15 @@ public class WebReader {
 		
 		//checking if has a unit
 		String word = s.substring(0, s.indexOf(' '));
-		System.out.println(word);
+		System.out.println(ing.unit);
 		if(Arrays.toString(Ingredient.unitListFull).contains(word) || Arrays.toString(Ingredient.unitListFullConverted).contains(word)){ //
-			ing.unit = word;
+			ing = new Ingredient(ing.quantity, ing.description, s.substring(0, s.indexOf(' ')));
+			System.out.println(s.substring(0, s.indexOf(' ')));
 			s = s.substring(s.indexOf(' ') + 1);
 		}
+
 		ing.description = s;
-		
+		ing.convertUnits();
 		return ing;
 	}
 	
@@ -70,7 +73,6 @@ public class WebReader {
 				String temp = s.substring(left);
 				int right =	temp.indexOf('<');
 				ingredientString = temp.substring(23, right);
-				System.out.println(ingredientString);
 				list.add(ingredientString);
 			}
 		}
