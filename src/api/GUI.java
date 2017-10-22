@@ -29,19 +29,22 @@ public class GUI extends Application {
         launch(args);
     }
 	
+	//Recipe Input Declarations
 	Button addURL;
 	Button submitURLs;
-	Text title;
-	Text finalTitle;
+	Text recipeInputTitle;
 	BorderPane border;
-	BorderPane finalBorder;
 	HBox titleAndURL;
-	HBox finalTitleAndURL;
 	Scene scene;
 	TextField URLField;
 	TextArea URLDisplay;
-	TextArea IngredientsDisplay;
 	String URLs = "";
+	
+	//Ingredients Display Declarations
+	Text ingredientsTitle;
+	BorderPane ingredientsBorderPane;
+	HBox ingredientsTitleAndURL;
+	TextArea ingredientsDisplay;
 	Stage secondStage;
 	Scene finalScene;
 	
@@ -126,32 +129,32 @@ public class GUI extends Application {
 //            	}
             	         	
             	secondStage = new Stage();
-            	finalBorder = new BorderPane();
+            	ingredientsBorderPane = new BorderPane();
             	
                 
             	//horizontal box for title, URL field and addURL button
-                finalTitleAndURL = new HBox();
+                ingredientsTitleAndURL = new HBox();
             	
                 //set window title
             	secondStage.setTitle("Grocer Ready - Ingredients List");     
                 
             	//main title
-            	finalTitle = new Text("Grocer Ready - Ingredients List");
-            	finalTitle.setFont(Font.font("Segoe UI Light", FontWeight.BOLD, 75));
-            	finalTitle.setFill(Color.WHITE);
-//            	finalTitle.setOpacity(0);
+            	ingredientsTitle = new Text("Grocer Ready - Ingredients List");
+            	ingredientsTitle.setFont(Font.font("Segoe UI Light", FontWeight.BOLD, 75));
+            	ingredientsTitle.setFill(Color.WHITE);
+//            	ingredientsTitle.setOpacity(0);
                 
                 //initialize horizontal box
-                finalTitleAndURL.getChildren().add(finalTitle);
-                finalTitleAndURL.setPadding(new Insets(0, 10, 10, 20));
-                finalTitleAndURL.setSpacing(30);
-                finalTitleAndURL.setStyle("-fx-background-color: #72A329;");
+                ingredientsTitleAndURL.getChildren().add(ingredientsTitle);
+                ingredientsTitleAndURL.setPadding(new Insets(0, 10, 10, 20));
+                ingredientsTitleAndURL.setSpacing(30);
+                ingredientsTitleAndURL.setStyle("-fx-background-color: #72A329;");
                 
                 //bottom text box
-                IngredientsDisplay = new TextArea();
-                IngredientsDisplay.setPrefSize(1205, 500);
-                IngredientsDisplay.setEditable(false);
-//                IngredientsDisplay.setStyle("-fx-background-color: green");
+                ingredientsDisplay = new TextArea();
+                ingredientsDisplay.setPrefSize(1205, 500);
+                ingredientsDisplay.setEditable(false);
+//                ingredientsDisplay.setStyle("-fx-background-color: green");
                 
                 String finalDisplayOutput = "";
                 
@@ -161,17 +164,17 @@ public class GUI extends Application {
                 
 //                System.out.println();
                 
-                IngredientsDisplay.setText(finalDisplayOutput);
+                ingredientsDisplay.setText(finalDisplayOutput);
                 //grid to add padding to text box
-                GridPane IngredientsDisplayGrid = new GridPane();
-                IngredientsDisplayGrid.setPadding(new Insets(30,35,30,35));
-                IngredientsDisplayGrid.add(IngredientsDisplay, 0, 0);
-                IngredientsDisplay.setFont(Font.font("Segoe UI Light", 20));
+                GridPane ingredientsDisplayGrid = new GridPane();
+                ingredientsDisplayGrid.setPadding(new Insets(30,35,30,35));
+                ingredientsDisplayGrid.add(ingredientsDisplay, 0, 0);
+                ingredientsDisplay.setFont(Font.font("Segoe UI Light", 20));
 //                
-                finalBorder.setTop(finalTitleAndURL);
-                finalBorder.setCenter(IngredientsDisplayGrid);
+                ingredientsBorderPane.setTop(ingredientsTitleAndURL);
+                ingredientsBorderPane.setCenter(ingredientsDisplayGrid);
                 
-                finalScene = new Scene(finalBorder, 1280, 720);
+                finalScene = new Scene(ingredientsBorderPane, 1280, 720);
                 secondStage.setScene(finalScene);
                 secondStage.show();
                 
@@ -185,13 +188,13 @@ public class GUI extends Application {
     	primaryStage.setTitle("Grocer Ready - Recipe Input");     
         
     	//main title
-        title = new Text("Grocer Ready");
-        title.setFont(Font.font("Segoe UI Light", FontWeight.BOLD, 75));
-        title.setFill(Color.WHITE);
-        title.setOpacity(0.9);
+    	recipeInputTitle = new Text("Grocer Ready");
+    	recipeInputTitle.setFont(Font.font("Segoe UI Light", FontWeight.BOLD, 75));
+    	recipeInputTitle.setFill(Color.WHITE);
+    	recipeInputTitle.setOpacity(0.9);
         
         //initialize horizontal box
-        titleAndURL.getChildren().add(title);
+        titleAndURL.getChildren().add(recipeInputTitle);
         titleAndURL.getChildren().add(URLFieldGrid);
         titleAndURL.getChildren().add(addURLGrid);
         titleAndURL.setPadding(new Insets(0, 10, 10, 20));
