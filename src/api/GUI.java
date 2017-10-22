@@ -83,13 +83,7 @@ public class GUI extends Application {
                 arrToTestURL.add(URLField.getText());
                 
                 //Invalid URL Error
-                String [] Error = {"ERROR (1)"};
-                if (testURL.getIngredients(arrToTestURL).equals(Error)) {
-                	URLField.setText("Invalid URL");
-//                	testWait();
-                	errorOrNo = true;
-                }
-                Error[0] = "ERROR (2)";
+                String [] Error = {"ERROR"};
                 if (testURL.getIngredients(arrToTestURL).equals(Error)) {
                 	URLField.setText("Invalid URL");
 //                	testWait();

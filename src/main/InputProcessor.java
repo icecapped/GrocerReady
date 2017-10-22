@@ -44,13 +44,13 @@ public class InputProcessor {
 			}
 			catch (IOException e)
 			{
-				return new String[] {"ERROR (1)"};
+				return new String[] {"ERROR"};
 			}
 			
 			if (ingredient == null)
 			{
 				// WebReader said that url was too short.
-				return new String [] {"ERROR (2)"};
+				return new String [] {"ERROR"};
 			}
 			
 			// consolidate the ingredients.
