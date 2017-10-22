@@ -31,6 +31,9 @@ public class GUI extends Application {
 	TextField URLField;
 	TextArea URLDisplay;
 	String URLs = "";
+	Text pleaseWait;
+	Text blankTitle;
+	
 	
 	//Ingredients Display Declarations
 	Text ingredientsTitle;
@@ -88,18 +91,32 @@ public class GUI extends Application {
             }
         });
     	
+    	//please wait
+    	pleaseWait = new Text("Please wait...");
+    	pleaseWait.setFont(Font.font("Segoe UI Light", FontWeight.BOLD, 25));
+    	pleaseWait.setFill(Color.web("#f4f4f4"));
+    	
+    	//blank text
+    	blankTitle = new Text("NOTHING");
+    	blankTitle.setFont(Font.font("Segoe UI Light", FontWeight.BOLD, 25));
+    	blankTitle.setFill(Color.web("#f4f4f4"));
+    	
     	//Submit URLs Button
     	submitURLs = new Button();
     	submitURLs.setText("Submit links");
     	submitURLs.setPrefSize(200, 60);
     	//GridPane
     	GridPane submitURLsGrid = new GridPane();
-    	submitURLsGrid.setPadding(new Insets(0,0,30,1000));
-    	submitURLsGrid.add(submitURLs, 0, 0);
+    	submitURLsGrid.setPadding(new Insets(0,0,30,800));
+    	submitURLsGrid.add(pleaseWait, 0, 0);
+    	submitURLsGrid.add(blankTitle, 1, 0);
+    	submitURLsGrid.add(submitURLs, 2, 0);
+    	
     	//Button Action
     	submitURLs.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
+            	pleaseWait.setFill(Color.BLACK);
             	ArrayList<String> totalURLs = new ArrayList<>();
             	
             	String filteredURLs = URLs;
@@ -126,7 +143,9 @@ public class GUI extends Application {
             	//main title
             	ingredientsTitle = new Text("Grocer Ready - Ingredients List");
             	ingredientsTitle.setFont(Font.font("Segoe UI Light", FontWeight.BOLD, 75));
-            	ingredientsTitle.setFill(Color.WHITE);
+            	ingredientsTitle.setFill(Color.web("#f4f4f4"));
+            	
+            	
             	
                 //initialize horizontal box
                 ingredientsTitleAndURL.getChildren().add(ingredientsTitle);
@@ -158,6 +177,8 @@ public class GUI extends Application {
                 ingredientsScene = new Scene(ingredientsBorderPane, 1280, 720);
                 ingredientsStage.setScene(ingredientsScene);
                 ingredientsStage.show();
+                
+                pleaseWait.setFill(Color.web("#f4f4f4"));
                 
             }
         });
