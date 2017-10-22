@@ -25,13 +25,13 @@ public class InputProcessor {
 	 */
 	public String[] getIngredients(ArrayList<String> url)
 	{
-		ArrayList<Ingredient> ingredient = null;
+		ArrayList<Ingredient> ingredient = new ArrayList<Ingredient>();
 		if(url != null) 
 		{
 			try 
 			{	
 				// open the next recipe
-				for(int i = 0; i < url.size() - 1; i++)
+				for(int i = 0; i < url.size(); i++)
 				{
 					ArrayList<Ingredient> temp = WebReader.getIngredients(url.get(i));
 					// add the ingredients from the list at this url
@@ -46,7 +46,7 @@ public class InputProcessor {
 				return new String[] {"ERROR"};
 			}
 			
-			if (ingredient == null)
+			if (ingredient.size() == 0)
 			{
 				// WebReader said that url was too short.
 				return new String [] {"ERROR"};
