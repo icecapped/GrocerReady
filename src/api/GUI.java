@@ -77,14 +77,12 @@ public class GUI extends Application {
             @Override
             public void handle(ActionEvent event) {
             	//Check for errors
-            	InputProcessor testURL = new InputProcessor();
                 ArrayList<String> arrToTestURL = new ArrayList<>();
                 Boolean errorOrNo = false;
                 arrToTestURL.add(URLField.getText());
                 
                 //Invalid URL Error
-                String [] Error = {"ERROR"};
-                if (testURL.getIngredients(arrToTestURL)[0].equals((Error)[0])) {
+                if (InputProcessor.getIngredients(arrToTestURL)[0].equals("ERROR")) {
                 	URLField.setText("Invalid URL");
                 	testWait();
                 	errorOrNo = true;
@@ -94,7 +92,7 @@ public class GUI extends Application {
                 	//Update URL String/Log
                 	URLs = URLs + URLField.getText() + "\n";
                 }
-                URLField.setText("Enter next URL... or click submit." + errorOrNo + testURL.getIngredients(arrToTestURL)[0]);
+                URLField.setText("Enter next URL... or click submit." + errorOrNo + InputProcessor.getIngredients(arrToTestURL)[0]);
                 URLDisplay.setText(URLs);
             }
         });

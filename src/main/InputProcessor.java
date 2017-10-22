@@ -10,20 +10,12 @@ import net.WebReader;
  */
 public class InputProcessor {
 	
-	String url;
-	
-	
-	public InputProcessor()
-	{
-		url = "";
-		
-	}
 	/**
 	 * Gets an ingredient list from the GUI and formats then returns it as an array
 	 * @param url
 	 * @return the ingredients represented by strings
 	 */
-	public String[] getIngredients(ArrayList<String> url)
+	public static String[] getIngredients(ArrayList<String> url)
 	{
 		ArrayList<Ingredient> ingredient = new ArrayList<Ingredient>();
 		if(url != null) 
