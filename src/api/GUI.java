@@ -29,16 +29,6 @@ public class GUI extends Application {
         launch(args);
     }
 	
-	public void testWait(){
-	    final long INTERVAL = 2000;
-	    long start = System.nanoTime();
-	    long end= System.nanoTime() + INTERVAL;
-	    do{
-	        
-	    }while(start < end);
-//	    System.out.println(end - start);
-	}
-	
 	Button addURL;
 	Button submitURLs;
 	Text title;
@@ -68,7 +58,7 @@ public class GUI extends Application {
     	addURL = new Button();
     	addURL.setText("Add URL");
     	addURL.setPrefSize(90, 60);
-    	addURL.setStyle("fx-background-color: #000000");
+//    	addURL.setStyle("fx-background-color: #000000");
     	//GridPane for top margin for addURL Button
     	GridPane addURLGrid = new GridPane();
     	addURLGrid.setPadding(new Insets(25,0,0,0));
@@ -84,15 +74,14 @@ public class GUI extends Application {
                 
                 //Invalid URL Error
                 if (InputProcessor.getIngredients(arrToTestURL)[0].equals("ERROR")) {
-                	URLField.setText("Invalid URL");
-//                	testWait();
-                	
+                	URLField.setText("Invalid URL");                	
                 	errorOrNo = true;
                 }
             	
                 if (errorOrNo) {
                 	//Update URL String/Log
                 	URLs = URLs + "Invalid URL.\n";
+                	//remember to filter out "Invalid URL.\n" before passing on
                 }
                 else {
                 	URLs = URLs + URLField.getText() + "\n";
@@ -102,6 +91,21 @@ public class GUI extends Application {
             }
         });
     	
+    	//Submit URLs Button
+    	submitURLs = new Button();
+    	submitURLs.setText("Submit links");
+    	submitURLs.setPrefSize(200, 60);
+    	//GridPane
+    	GridPane submitURLsGrid = new GridPane();
+    	submitURLsGrid.setPadding(new Insets(0,0,30,1000));
+    	submitURLsGrid.add(submitURLs, 0, 0);
+    	//Button Action
+    	submitURLsGrid.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+            	showFinalIngredients();
+            }
+        });
     	
     	//horizontal box for title, URL field and addURL button
         titleAndURL = new HBox();
@@ -128,6 +132,7 @@ public class GUI extends Application {
         URLDisplay.setPrefSize(1205, 500);
         URLDisplay.setText(URLs);
         URLDisplay.setEditable(false);
+        URLDisplay.setStyle("-fx-background-color: green");
         //grid to add padding to text box
         GridPane URLListGrid = new GridPane();
         URLListGrid.setPadding(new Insets(30,35,30,35));
@@ -138,16 +143,16 @@ public class GUI extends Application {
         border = new BorderPane();
         border.setTop(titleAndURL);
         border.setCenter(URLListGrid);
+        border.setBottom(submitURLsGrid);
         
         //reveal scene
         scene = new Scene(border, 1280, 720);
         primaryStage.setScene(scene);
         primaryStage.show();
-
         
     }
     
-    public void showIngredients(Stage finalStage, ArrayList<Ingredient> allIngredients) throws Exception {
+    public void showFinalIngredients(Stage finalStage, ArrayList<Ingredient> allIngredients) throws Exception {
         finalStage.setTitle("Grocer Ready");
 
     }
