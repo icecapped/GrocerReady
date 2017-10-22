@@ -14,8 +14,11 @@ public class WebReader {
 	
 	private static Ingredient stringToIngredient(String s){
 		Ingredient ing = new Ingredient(0, s, "");
+		String numbers = "0123456789";
 		
-		if(s.indexOf(' ') != -1 && (s.indexOf('/') == -1 || s.indexOf(' ') < s.indexOf('/'))){ // processing whole number/mixed fraction
+		if((s.indexOf(' ') != -1 && (s.indexOf('/') == -1 || s.indexOf(' ') < s.indexOf('/'))) && numbers.contains(s.substring(0, 1))){ // processing whole number/mixed fraction
+			System.out.println(s);
+			System.out.println("hi" + s.substring(0, s.indexOf(' ')));
 			ing.quantity = Integer.parseInt(s.substring(0, s.indexOf(' ')));
 			s = s.substring(s.indexOf(' ') + 1);
 

@@ -5,7 +5,6 @@ import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
-
 import java.util.ArrayList;
 import javafx.scene.text.*;
 import javafx.stage.*;
@@ -19,9 +18,10 @@ import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
-import javafx.scene.effect.BlendMode;
+//import javafx.scene.effect.BlendMode;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
+//import java.lang.Object.*;
 
 public class GUI extends Application {
 
@@ -30,12 +30,12 @@ public class GUI extends Application {
     }
 	
 	public void testWait(){
-	    final long INTERVAL = 2000000;
+	    final long INTERVAL = 2000;
 	    long start = System.nanoTime();
-	    long end=0;
+	    long end= System.nanoTime() + INTERVAL;
 	    do{
-	        end = System.nanoTime();
-	    }while(start + INTERVAL >= end);
+	        
+	    }while(start < end);
 //	    System.out.println(end - start);
 	}
 	
@@ -73,6 +73,7 @@ public class GUI extends Application {
     	GridPane addURLGrid = new GridPane();
     	addURLGrid.setPadding(new Insets(25,0,0,0));
     	addURLGrid.add(addURL, 0, 0);
+    	//Button Action
     	addURL.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
@@ -84,18 +85,23 @@ public class GUI extends Application {
                 //Invalid URL Error
                 if (InputProcessor.getIngredients(arrToTestURL)[0].equals("ERROR")) {
                 	URLField.setText("Invalid URL");
-                	testWait();
+//                	testWait();
+                	
                 	errorOrNo = true;
                 }
             	
-                if (!errorOrNo) {
+                if (errorOrNo) {
                 	//Update URL String/Log
+                	URLs = URLs + "Invalid URL.\n";
+                }
+                else {
                 	URLs = URLs + URLField.getText() + "\n";
                 }
-                URLField.setText("Enter next URL... or click submit." + errorOrNo + InputProcessor.getIngredients(arrToTestURL)[0]);
+                URLField.setText("Enter next URL... or click submit.");
                 URLDisplay.setText(URLs);
             }
         });
+    	
     	
     	//horizontal box for title, URL field and addURL button
         titleAndURL = new HBox();
