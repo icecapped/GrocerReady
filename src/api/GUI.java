@@ -74,24 +74,25 @@ public class GUI extends Application {
     	addURLGrid.setPadding(new Insets(25,0,0,0));
     	addURLGrid.add(addURL, 0, 0);
     	addURL.setOnAction(new EventHandler<ActionEvent>() {
-            @Override 
+            @Override
             public void handle(ActionEvent event) {
             	//Check for errors
             	InputProcessor testURL = new InputProcessor();
                 ArrayList<String> arrToTestURL = new ArrayList<>();
                 Boolean errorOrNo = false;
+                arrToTestURL.add(URLField.getText());
                 
                 //Invalid URL Error
                 String [] Error = {"ERROR (1)"};
                 if (testURL.getIngredients(arrToTestURL).equals(Error)) {
                 	URLField.setText("Invalid URL");
-                	testWait();
+//                	testWait();
                 	errorOrNo = true;
                 }
                 Error[0] = "ERROR (2)";
                 if (testURL.getIngredients(arrToTestURL).equals(Error)) {
                 	URLField.setText("Invalid URL");
-                	testWait();
+//                	testWait();
                 	errorOrNo = true;
                 }
             	
