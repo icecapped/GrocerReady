@@ -16,19 +16,19 @@ public class IngredientsCollector {
 		}//end of for consolidateIngredients i statement
 		for (int index=0; index<ingredientsArray.size(); index++) {
 			if (ingredientsArray.get(index).unit=="mL" && ingredientsArray.get(index).quantity>=1000) {
-				ingredientsArray.get(index).quantity= ingredientsArray.get(index).quantity / 1000;
+				ingredientsArray.get(index).quantity/= 1000;
 				ingredientsArray.get(index).unit="L";
 			}
 			else if (ingredientsArray.get(index).unit=="gr" && ingredientsArray.get(index).quantity>=1000) {
-				ingredientsArray.get(index).quantity= ingredientsArray.get(index).quantity / 1000;
+				ingredientsArray.get(index).quantity/=  1000;
 				ingredientsArray.get(index).unit="kg";
 			}
 			else if (ingredientsArray.get(index).unit=="cm" && ingredientsArray.get(index).quantity>=1000) {
-				ingredientsArray.get(index).quantity= ingredientsArray.get(index).quantity /1000;
+				ingredientsArray.get(index).quantity/= 1000;
 				ingredientsArray.get(index).unit= "km";
 			}
 			else if (ingredientsArray.get(index).unit=="cm" && ingredientsArray.get(index).quantity>=100) {
-				ingredientsArray.get(index).quantity= ingredientsArray.get(index).quantity /100;
+				ingredientsArray.get(index).quantity/=100;
 				ingredientsArray.get(index).unit="m";
 			}
 		}
