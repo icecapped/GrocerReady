@@ -14,9 +14,9 @@ public class Ingredient {
 		"mL", "mL", "tbsp", "tbsp", "tsp", "tsp", "oz", "oz", "in", "in", "cm", "cm",
 		"cm", "cm", "ft", "ft"};
 	
-	private String description;
-	private double quantity;
-	private String unit;
+	public String description;
+	public double quantity;
+	public String unit;
 	
 	private static final double OUNCE_TO_GRAMS= 28.34952;
 	private static final double POUNDS_TO_KILOGRAMS= 0.453592;
@@ -94,6 +94,8 @@ public class Ingredient {
 			unit="L";
 		}
 		
-			}
+	}
+	
+	//variable methods
+	
 }//end of public class Ingredient
-
