@@ -22,7 +22,15 @@ public class WebReader {
 		return null;
 	}
 	
-	private static ArrayList<Ingredient> fetchAR(BufferedReader html){ //Allrecipes
+	private static ArrayList<Ingredient> fetchAR(BufferedReader html) throws IOException{ //Allrecipes
+		ArrayList<Ingredient> list = new ArrayList<Ingredient>();
+		
+		String s;
+		while((s = html.readLine()) != null){
+			if(s.contains("itemprop=\"ingredients\"")){
+				
+			}
+		}
 		return null;
 	}
 }

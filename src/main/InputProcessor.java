@@ -20,7 +20,14 @@ public class InputProcessor {
 	{
 		if(url != null) 
 		{
-			ingredient = WebReader.getIngredients(url);
+			try 
+			{
+				ingredient = WebReader.getIngredients(url);
+			}
+			catch (IOException e)
+			{
+				// 
+			}
 		} // end of if url is valid
 	} // end of public InputProcessor(String url)
 	

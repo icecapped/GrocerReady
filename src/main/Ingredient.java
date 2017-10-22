@@ -5,12 +5,12 @@ public class Ingredient {
 
 	
 	private static final String[] unitListFull = {"pound", "pounds", "kilogram", 
-			"kilograms", "litre", "litres","liter","liters", "millilitre", "millilitres", "milliliter","milliliters","tablespoon", 
+			"kilograms", "litre", "litres","liter","liters","cups", "cup", "pint", "pints", "millilitre", "millilitres", "milliliter","milliliters","tablespoon", 
 			"tablespoons", "teaspoon", "teaspoons", "ounce", "ounces", "inch", "inches",
 			"centimeters", "centimetres", "centimetre", "centimeter", "foot", "feet", 
 			""};
 	
-	private static final String[] unitListFullConverted = {"lb", "lb", "kg", "kg", "L", "L",
+	private static final String[] unitListFullConverted = {"lb", "lb", "kg", "kg", "L", "L", "cp", "cp", "p", "p",
 		"mL", "mL", "tbsp", "tbsp", "tsp", "tsp", "oz", "oz", "in", "in", "cm", "cm",
 		"cm", "cm", "ft", "ft"};
 	

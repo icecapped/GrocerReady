@@ -19,11 +19,17 @@ public class IngredientsCollector {
 	private double numberOfGrams;
 	
 	/* evaluating*/
+	
 	public static double toGrams(double quantity, String units) {
-		double converted;
-		
-		
-		
+		double converted = 0;
+		if (units=="oz") {
+			quantity= OUNCE_TO_GRAMS * quantity;
+			units="gr";
+		}//end of if
+		else {
+			converted= quantity;
+			units= "gr";
+		}// end of else
 		return converted;
 	}
 	
