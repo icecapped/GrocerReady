@@ -1,6 +1,16 @@
 package main;
 
+/**
+ * Evaluates the ingredients' units, converts them to short form, then converts to desired units
+ * @author Michael Shi, Dave Singh, Ana Han, Lokeesan Kaneshwaran
+ * @version 1.0
+ *
+ */
+
 public class Ingredient {
+	/**
+	 * Description of unit lists (as written on web sites) as an array and its equivalent short form as another array
+	 */
 	
 	public static final String[] unitListFull = {"pound", "pounds", "kilogram", 
 			"kilograms", "litre", "litres","liter","liters","cups", "cup", "pint", "pints", "millilitre", "millilitres", "milliliter","milliliters","tablespoon", 
@@ -49,7 +59,7 @@ public class Ingredient {
 		if(unit == null)
 		{
 			return quantity + " " + description;
-		}
+		}//end of if
 		else
 		{
 			return quantity + unit + " " + description;
@@ -66,41 +76,38 @@ public class Ingredient {
 		else if (unit=="L") {
 			quantity= quantity* 1000;
 			unit="mL";
-		}
+		}//end of else if 1
 		
 		else if (unit=="lb") {
 			quantity= quantity * POUNDS_TO_KILOGRAMS*1000;
 			unit= "gr";
-		}//end of else if 1
+		}//end of else if 2
 		else if (unit=="tbsp") {
 			quantity= quantity * TABLESPOONS_TO_MILLILITRES;
 			unit= "mL";
-		}//end of else if 2
+		}//end of else if 3
 		else if (unit=="tsp") {
 			quantity= quantity * TEASPOONS_TO_MILLILITRES;
 			unit="mL";
-		}//end of else if 3
+		}//end of else if 4
 		else if (unit=="in") {
 			quantity= quantity* INCHES_TO_CENTIMETRES;
 			unit="cm";
-		}// end of else if 4
+		}// end of else if 5
 		else if (unit=="ft") {
 			quantity= quantity* FEET_TO_CENTIMETRES;
 			unit= "cm";
-		}// end of else if 5
+		}// end of else if 6
 		else if (unit=="cp") {
 			quantity=quantity* CUPS_TO_LITRES*1000;
 			unit="mL";
-		}//end of else if 6
+		}//end of else if 7
 		else if (unit== "p") {
 			quantity= quantity* PINTS_TO_LITRES*1000;
 			unit="mL";
-		}//end of else if 7
-		//end of public void convertUnits()//end of public class Ingredient
+		}//end of else if 8
 
-	}
-	
-	//variable methods
+	}//variable methods
 	
 }//end of public class Ingredient
 
